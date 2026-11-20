@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "playbook"
 BEGIN = "<!-- deeds-playbook:begin (managed by nissan/solana-deeds-playbook scripts/install.py) -->"
 END = "<!-- deeds-playbook:end -->"
+ANCHOR = "## Workbench adoption\n"
 SECTION = f"""{BEGIN}
 ## Deed playbook
 
@@ -58,6 +59,10 @@ def apply(target):
             raise SystemExit("AGENTS.md has a playbook section with no end marker")
         head, rest = text.split(BEGIN, 1)
         text = head + SECTION + rest.split(END, 1)[1].lstrip("\n")
+    elif ANCHOR in text:
+        # Another tool manages a block at the end of the file and expects to stay last.
+        head, rest = text.split(ANCHOR, 1)
+        text = head + SECTION + "\n" + ANCHOR + rest
     else:
         text = text.rstrip("\n") + "\n\n" + SECTION
     agents.write_text(text, encoding="utf8")
