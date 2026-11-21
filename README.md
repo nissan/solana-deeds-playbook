@@ -14,7 +14,7 @@ This repository is the master copy. Each deed repository carries a pinned copy u
 | [playbook/TRAPS.md](playbook/TRAPS.md) | Things that cost a retry, as observed |
 | [scripts/install.py](scripts/install.py) | Copies a pinned snapshot into a deed repository, or checks one for drift |
 
-It was written from Deeds #1 to #3, then revised after their three videos were re-recorded in the owner's voice and republished. It has not yet been run by a session that did not write it. Deed #4 is its first test.
+It was written from Deeds #1 to #3, then revised after their three videos were re-recorded in the owner's voice and republished. Deed #4 was its first run by a session that did not write it. That session got from "begin" to three merged outcomes without correction, but the owner had to correct the video and the publishing seven times; the playbook was revised again from that retrospective. The revised checks have not yet been run by a fresh session.
 
 ## What it is not
 
