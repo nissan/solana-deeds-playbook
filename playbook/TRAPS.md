@@ -17,6 +17,7 @@ Facts that cost a retry on Deeds #1 to #3. Each was true when observed in Novemb
 - A user-level cargo `target-dir` sends build output outside the repository. Override it in the repository's `.cargo/config.toml`.
 - Anchor creates `init_if_needed` accounts before it runs `has_one` and seeds checks, so a caller can see a later check's error. The transaction still reverts.
 - Templates ship their own agent skill folders and advisories. Remove the former; run the package audit and patch the latter.
+- A framework's development server can write its own agent-instructions file into the project on first start. Switch that off in its config, and check the tree after the first run.
 
 ## Process
 
@@ -25,6 +26,9 @@ Facts that cost a retry on Deeds #1 to #3. Each was true when observed in Novemb
 - A cleanup command that matches processes by pattern can match its own shell.
 - A browser tab with a password manager's autofill menu open cannot be driven. Ask the owner to close the menu or do the step.
 - Test libraries that simulate a browser may lack functions a UI library calls (`Element.getAnimations`). Stub only when a component needs it.
+- A secret scanner's generic rule can flag a public address because the field name contains "Key". An exception scoped by file path can let real findings in those files through: scope it to the exact line shape, and test it by planting something the scanner catches without the exception.
+- A process started for a check can outlive it and hold its port. Stop it by port, not by a name pattern.
+- A password manager's approval prompt can time out or be dismissed. Each restart of a process that needs a secret is another prompt: start it once and leave it running.
 
 ## Video
 
@@ -38,6 +42,10 @@ Facts that cost a retry on Deeds #1 to #3. Each was true when observed in Novemb
 - A recording made in the browser carries a second or more of silence after the last word. The voice booth cuts it; a hand-built cut would hold the picture too long.
 - Caption times inside a re-voiced scene are spread over the speech, not matched to the words, and the caption text is still the script. If the owner changed the words, the caption has to be changed by hand.
 - A preview that crops a video is not evidence the video is cropped. Check the file's own frame before re-rendering.
+- A player that finds a caption file beside a video with the same name loads it, so a video with burned-in captions shows them twice. The file is fine; open it with sidecar loading off.
+- A summary line drawn near the bottom of an animated scene sits directly above the captions and reads as a second caption.
+- A block explorer page shows its summary before its token and log sections have loaded. Wait for the section you need, not for the page.
+- The top of an explorer's transaction page does not show token amounts. Scroll to the token section, or the picture will not match a narration that names an amount.
 
 ## Publishing
 
@@ -50,3 +58,6 @@ Facts that cost a retry on Deeds #1 to #3. Each was true when observed in Novemb
 - A scheduling tool can be signed into a different brand's account. Check which channels it has before queueing anything, and ask if they are not the owner's.
 - In a browser tab that is not in front, a click on a "Post" or menu button may do nothing. Focus the button and press Enter, then confirm on the page that it happened exactly once.
 - Deleting a repository, and some account pages, ask the owner for a passkey or a wider token. That step is his.
+- A post composer can scramble text inserted in one go, and can close on Escape and save what was typed as a draft. Type with keystrokes, avoid Escape, and look in drafts after any failed attempt.
+- A block explorer can answer an automated link check with "too many requests" while the page loads in a browser. Report the link as unconfirmed; do not report it as checked.
+- A network's mention picker can offer several organisations with the same name. If none can be confirmed, post without the mention.
