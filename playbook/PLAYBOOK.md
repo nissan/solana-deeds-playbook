@@ -114,7 +114,8 @@ Order: video approved and uploaded, then the article live, then the social posts
 6. Publish the article through the site repository's own pull-request flow and wait for its checks. Build it locally first; the site has its own link and claim checks (see [TRAPS.md](TRAPS.md)). Read the live page back and confirm every link before posting anything that points to it.
 7. Post from the owner's signed-in accounts only when told to. If the scheduling tool he names is signed into a different account or lacks his channels, stop and ask rather than posting somewhere else. Link both the article and the video. Read each post back after it is sent, check there is exactly one, and record the permalinks.
 8. Upload the video the owner narrated and approved, unlisted unless told otherwise, with published captions, then confirm it plays signed out. [video/README.md](video/README.md) has the upload checklist and what to do when a video that is already linked has to be replaced.
-9. After publishing, bring the repository's own record up to date through its pull-request flow: README and evidence page name the cut that is live, its visibility and its address.
+9. Share the release where the owner's community gathers. Each earlier deed went to a chat group as one short message: a two-sentence hook and the link to the social post. Find the previous deed's message there, match its shape, send one, and read it back. This step was missed for Deed #3 and had to be asked for; it belongs in the same instruction as the social posts.
+10. After publishing, bring the repository's own record up to date through its pull-request flow: README and evidence page name the cut that is live, its visibility and its address.
 
 ## 8. Public source
 
