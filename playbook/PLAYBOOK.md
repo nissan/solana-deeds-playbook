@@ -37,7 +37,7 @@ After the outcomes: demo video, drafted with a reference voice and then narrated
 
 ## 2. Giving an outcome to a builder
 
-A long outcome goes to a separate builder session with a written brief, so the directing session stays free and the work survives a restart.
+A long outcome goes to a separate builder session with a written brief, so the directing session stays free and the work survives a restart. The owner may instead have the directing session build an outcome itself. That is his choice: ask, and do not assume either way. Deed #4 was built in the directing session.
 
 1. Check capacity first, by the rule in the owner's fleet policy. Unknown capacity is a stop, not a free slot.
 2. Fill in the brief template for the outcome type. Every `[BRACKET]` is re-derived for this deed; nothing is carried over from an earlier deed.
@@ -76,6 +76,8 @@ Scenarios written by an agent stay "Draft" until the owner confirms them. Buildi
 - Save one real run's console output to `docs/evidence/`. The demo video replays it.
 - Do not ask the faucet from code. See [TRAPS.md](TRAPS.md).
 
+**When a deed needs mainnet.** Some deeds only work against mainnet. The agent still never signs there and never holds a mainnet key. The owner makes the transaction from his own wallet; the agent starts the application, records the screen if he wants footage, and afterwards reads the transaction back from the chain at `finalized` and compares it with what the application showed. Keep a read-only reproduction script that does that read-back.
+
 ## 5. The build journal
 
 Start it at kickoff and add to it as things happen, not at the end. It is what the article is written from.
@@ -102,17 +104,27 @@ The video is made in two passes. A **draft** with a synthetic reference voice ge
 9. **Draft review.** Open each draft cut locally for the owner. Number the cuts and never overwrite one. He approves the picture and the words.
 10. **The owner's voice.** Follow [video/VOICE.md](video/VOICE.md): render the clean picture, load it into the voice booth, hand over, and check the cut he assembles. He records; you never start the microphone. His approval of that assembled file, by its SHA-256, is the one that allows upload.
 
+Checks added after Deed #4, where the owner caught each of these himself:
+
+- **Words against picture.** Before a draft is shown, go through the script. For every claim the narration makes about what is on screen, look at the frame at that moment and confirm it shows the thing named.
+- **Words against time.** Lay each scene's narration timing against its screen clip. If the picture reaches a point after the words do, re-time the clip.
+- **Re-time to his take.** After the owner records, re-time animated scenes to his recording. The reference voice reads slower than he does, so a scene timed to it runs on after he stops.
+- **Room for captions.** Leave the bottom of the frame empty in screen scenes. Draw no summary line where captions go: it reads as a second caption.
+- **Screen takes.** The owner drives and the agent records. Say beforehand what a full-screen recording will show. Raw takes stay outside the repository; scenes are cropped to the page.
+- **Covering a secret.** Cover it for its whole time on screen with a margin, then check by OCR over every frame of the clip and by eye at both edges of the cover.
+- **One fault, every scene.** When one scene has a fault, look for the same fault in every scene before rendering again.
+
 ## 7. Article and social posts
 
 Order: video approved and uploaded, then the article live, then the social posts, each on the owner's explicit instruction.
 
 1. Draft from the journal, the evidence pages and the receipts. Every number, date and named claim must trace to one of them; mark anything unsourced instead of smoothing it over.
-2. Use the owner's writing-style skill first, then the humaniser skill, then check that the second pass did not strip the voice. If either skill is missing, say so rather than imitating it.
+2. Use the owner's writing-style skill first, then the humaniser skill, then check that the second pass did not strip the voice. Run each as its own pass and write down what it changed; reading a skill and writing "to" it is not using it. If either skill is missing, say so rather than imitating it. For every first-person sentence, check who actually did the thing: the owner, the agent, or both.
 3. Carry the analogy from the video into the article. Explain the concept before the mechanics. Keep the series name and number in the title, and link the previous deed.
-4. Social posts open on a hook a reader can picture, not a summary. Keep the series hashtag the owner uses. Follow the continuity of the earlier posts in the series.
+4. Social posts open on a hook a reader can picture, not a summary. Keep the series hashtag the owner uses. Follow the continuity of the earlier posts in the series, except where this playbook says otherwise. Before handing a draft over, apply everything already on file for it: both links, the series hashtag, and the accounts to tag. Open each profile before tagging it. If a mention picker offers look-alike accounts, tag nobody and say so.
 5. Put review copies where the owner reads drafts and open them there. Revise in place.
 6. Publish the article through the site repository's own pull-request flow and wait for its checks. Build it locally first; the site has its own link and claim checks (see [TRAPS.md](TRAPS.md)). Read the live page back and confirm every link before posting anything that points to it.
-7. Post from the owner's signed-in accounts only when told to. If the scheduling tool he names is signed into a different account or lacks his channels, stop and ask rather than posting somewhere else. Link both the article and the video. Read each post back after it is sent, check there is exactly one, and record the permalinks.
+7. Post from the owner's signed-in accounts only when told to. If the scheduling tool he names is signed into a different account or lacks his channels, stop and ask rather than posting somewhere else. Link both the article and the video. Type the text into the composer with keystrokes, compare what the composer holds with the draft, and only then post. After any failed attempt, check what was posted and what was saved as a draft before trying again. Read each post back after it is sent, check there is exactly one, and record the permalinks.
 8. Upload the video the owner narrated and approved, unlisted unless told otherwise, with published captions, then confirm it plays signed out. [video/README.md](video/README.md) has the upload checklist and what to do when a video that is already linked has to be replaced.
 9. Share the release where the owner's community gathers. Each earlier deed went to a chat group as one short message: a two-sentence hook and the link to the social post. Find the previous deed's message there, match its shape, send one, and read it back. This step was missed for Deed #3 and had to be asked for; it belongs in the same instruction as the social posts.
 10. After publishing, bring the repository's own record up to date through its pull-request flow: README and evidence page name the cut that is live, its visibility and its address.
