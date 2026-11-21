@@ -1,0 +1,26 @@
+{
+  "project": "EXAMPLE ONLY. Every value here is from Deed #1 and must be re-derived for the deed in hand.",
+  "sourceCommit": "the full commit the demo shows",
+  "geometry": {"width": 1280, "height": 720, "fps": 30},
+  "audioPolicy": "The owner narrates the published cut. The voice below is the reference he hears before recording; it is not published.",
+  "voice": {"engine": "local kokoro-onnx", "preset": "af_heart", "language": "en-us", "speed": 1.05, "synthetic": true, "cloned": false},
+  "scenes": [
+    {"id": "s01-title", "mediaType": "card", "purpose": "Say what the deed set out to do, in plain words",
+     "lines": [{"text": "The Solana Deeds #1", "size": 52, "y": 225}, {"text": "Wallet dashboard on devnet", "size": 34, "y": 306}, {"text": "Test Wallet Standard wallet", "size": 22, "y": 375, "color": "0xbbbbbb"}],
+     "script": ["For Deed One, I wanted the simplest useful thing on Solana: a page that shows what's in a wallet and lets you send some of it.", "I called it the easy one."]},
+    {"id": "s02-keyring", "mediaType": "clip", "stage": true, "purpose": "The analogy: a wallet is a key ring, the coins are on a public ledger",
+     "selectedTake": "renders/s02-keyring-take-1.mp4", "endStill": "validation/s02-keyring-late.png",
+     "script": ["Here's the idea that makes the rest click.", "Your wallet doesn't hold your coins.", "It's a key ring.", "The coins sit on a public ledger that anyone can read, and your key only proves which entries are yours.", "So a dashboard is a window onto that ledger, plus a way to ask the key ring to sign."]},
+    {"id": "s03-connect", "mediaType": "source", "purpose": "Connect the test wallet on devnet",
+     "selectedTake": "sources/screen/s03-connect-take-1.webm", "endStill": "sources/graphics/s03-connect-end-take-1.png",
+     "script": ["Devnet is Solana's practice field: same rules, play money.", "Connecting shares only the public address."]},
+    {"id": "s04-holdings", "mediaType": "still", "purpose": "Read the balances",
+     "selectedTake": "sources/graphics/s03-connect-end-take-1.png",
+     "script": ["Now the window.", "There's the SOL balance and two test tokens."]},
+    {"id": "s05-replay", "mediaType": "card", "purpose": "Replay the saved terminal output of one transfer",
+     "lines": [{"text": "Terminal replay · Recorded devnet output", "size": 30, "y": 110},
+               {"text": "$ pnpm demo:send", "size": 24, "x": 80, "y": 190, "at": 0.4},
+               {"text": "transfer: finalized", "size": 24, "x": 80, "y": 232, "at": 2.5, "color": "0xa2e4b8"}],
+     "script": ["First transfer: one hundredth of a SOL.", "The wallet signs it and devnet confirms it."]}
+  ]
+}

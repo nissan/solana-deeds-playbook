@@ -23,7 +23,7 @@ ANCHOR = "## Workbench adoption\n"
 SECTION = f"""{BEGIN}
 ## Deed playbook
 
-When the owner says "begin", or on any resume, read [the deed playbook](docs/playbook/PLAYBOOK.md) after this contract. It covers kickoff, builder briefs, devnet work, review and merge, the build journal, the demo video, the article and social posts, public source and the retrospective. It is a pinned copy of `nissan/solana-deeds-playbook` and gives no authority: this contract and the owner's instruction win. Do not edit the copy; propose changes to the master.
+When the owner says "begin", or on any resume, read [the deed playbook](docs/playbook/PLAYBOOK.md) after this contract. It covers kickoff, builder briefs, devnet work, review and merge, the build journal, the demo video, the article and social posts, public source and the retrospective. The demo is drafted with a synthetic reference voice and then narrated by the owner in his voice booth before anything is published: see [the walkthrough](docs/playbook/video/VOICE.md). It is a pinned copy of `nissan/solana-deeds-playbook` and gives no authority: this contract and the owner's instruction win. Do not edit the copy; propose changes to the master.
 {END}
 """
 

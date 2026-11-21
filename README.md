@@ -10,11 +10,11 @@ This repository is the master copy. Each deed repository carries a pinned copy u
 | --- | --- |
 | [playbook/PLAYBOOK.md](playbook/PLAYBOOK.md) | The steps, from kickoff to retrospective |
 | [playbook/briefs/](playbook/briefs/) | Brief templates for handing an outcome to a builder session |
-| [playbook/video/](playbook/video/) | The demo video pipeline and its two scripts |
+| [playbook/video/](playbook/video/) | The demo video pipeline, its scripts, and [how the owner's own narration replaces the draft's synthetic voice](playbook/video/VOICE.md) before anything is published |
 | [playbook/TRAPS.md](playbook/TRAPS.md) | Things that cost a retry, as observed |
 | [scripts/install.py](scripts/install.py) | Copies a pinned snapshot into a deed repository, or checks one for drift |
 
-It was written from Deeds #1 to #3 and has not yet been run by a session that did not write it. Deed #4 is its first test.
+It was written from Deeds #1 to #3, then revised after their three videos were re-recorded in the owner's voice and republished. It has not yet been run by a session that did not write it. Deed #4 is its first test.
 
 ## What it is not
 

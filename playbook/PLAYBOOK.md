@@ -1,6 +1,6 @@
 # The Solana Deeds playbook
 
-How one deed goes from "begin" to a merged build, a demo video, an article and social posts. Written from Deeds #1 to #3. It is for a fresh agent session with no memory of earlier deeds, and for the person directing it.
+How one deed goes from "begin" to a merged build, a demo video, an article and social posts. Written from Deeds #1 to #3, and revised after their videos were re-recorded in the owner's own voice and republished. It is for a fresh agent session with no memory of earlier deeds, and for the person directing it.
 
 This folder is a pinned copy. The master is `nissan/solana-deeds-playbook`; do not edit the copy. If a step here is wrong, finish the deed, then propose the change to the master in the retrospective (step 9).
 
@@ -24,7 +24,7 @@ A deed repository starts as a plan: three or four outcome issues and no product 
 | `-003` | Reviewer proof: README, reproduction, secret scan, demo | [briefs/03-reviewer-proof.md](briefs/03-reviewer-proof.md) |
 | `-004` | Stretch outcome, only after the core is merged | [briefs/04-stretch.md](briefs/04-stretch.md) |
 
-After the outcomes: demo video (step 6), article and social posts (step 7), public source (step 8), retrospective (step 9).
+After the outcomes: demo video, drafted with a reference voice and then narrated by the owner (step 6), article and social posts (step 7), public source (step 8), retrospective (step 9).
 
 ## 1. When the owner says "begin"
 
@@ -87,17 +87,20 @@ Start it at kickoff and add to it as things happen, not at the end. It is what t
 
 ## 6. The demo video
 
-Read [video/README.md](video/README.md) for the pipeline. The direction below is what the owner asked for across Deeds #1 and #2; apply it from the first cut.
+Read [video/README.md](video/README.md) for the pipeline and [video/VOICE.md](video/VOICE.md) for the owner's narration. The direction below is what the owner asked for across Deeds #1 to #3; apply it from the first cut.
+
+The video is made in two passes. A **draft** with a synthetic reference voice gets the picture and the words right. Then **the owner records every scene himself** in his voice booth and assembles the cut that is published. The synthetic voice is never published.
 
 1. **Goal first.** The opening card and first spoken line say what the deed builds and what outcome we want. Do not open on a puzzle the viewer has no context for.
-2. **Teach before showing.** Assume a curious beginner. Explain the accounts or concepts the deed depends on before the walkthrough, at roughly a ten-to-fifteen-year-old's level.
-3. **One concrete analogy.** Find a real-world story that makes the mechanism obvious and stays true to how the chain behaves, then lead back to the real flow. Check the analogy against the protocol: if it would teach something false, change the analogy.
+2. **Teach before showing.** Assume a curious beginner. Explain the accounts or concepts the deed depends on before the walkthrough, at roughly a ten-to-fifteen-year-old's level. Say what a thing is before using its name.
+3. **One concrete analogy, with its own animated scene.** Find a real-world story that makes the mechanism obvious and stays true to how the chain behaves, then lead back to the real flow. Check the analogy against the protocol: if it would teach something false, change the analogy. Draw it as an animated scene near the start, where each sentence changes the picture. A script of feature statements over screen footage is not enough: Deed #1 was redone for that reason.
 4. **A diagram.** A Mermaid flow of the transactions and accounts, rendered into the video, with the source kept in the repository for the article.
-5. **Proof on screen.** Animated replays of the saved terminal output, labelled as replays, and real block-explorer screenshots of the finalised transactions. Never present a replay as live footage.
+5. **Proof on screen.** Animated replays of the saved terminal output, labelled as replays, and real block-explorer screenshots of the finalised transactions. Never present a replay as live footage. Real addresses and amounts in an illustration come from the run; anything made up is labelled as an example or drawn without figures.
 6. **Say why a tool was chosen** when the deed made a choice a learner would wonder about, and when the alternative would be the better pick.
-7. **Honest labels.** Synthetic narration is disclosed on the title card, in the narration and in the upload settings. Test wallets and fixtures are named as such.
-8. **Run the narration through the writing skills** (step 7) before synthesising. Read it aloud once: glossary sentences and stiff phrasing are the usual faults.
-9. Open each cut locally for the owner. Number the cuts and never overwrite one. Approval attaches to one exact file by its SHA-256.
+7. **Honest labels.** The published video is the owner's voice, so nothing in it says the narration is synthetic: not the script, not a card, not a caption, not the description. A draft is never published, and a cut with any scene still in the reference voice is not publishable. Test wallets and fixtures are named as such.
+8. **Write the narration to be spoken by a person.** Run it through the writing skills (step 7) before synthesising the reference. Read it aloud once: glossary sentences and stiff phrasing are the usual faults.
+9. **Draft review.** Open each draft cut locally for the owner. Number the cuts and never overwrite one. He approves the picture and the words.
+10. **The owner's voice.** Follow [video/VOICE.md](video/VOICE.md): render the clean picture, load it into the voice booth, hand over, and check the cut he assembles. He records; you never start the microphone. His approval of that assembled file, by its SHA-256, is the one that allows upload.
 
 ## 7. Article and social posts
 
@@ -108,9 +111,10 @@ Order: video approved and uploaded, then the article live, then the social posts
 3. Carry the analogy from the video into the article. Explain the concept before the mechanics. Keep the series name and number in the title, and link the previous deed.
 4. Social posts open on a hook a reader can picture, not a summary. Keep the series hashtag the owner uses. Follow the continuity of the earlier posts in the series.
 5. Put review copies where the owner reads drafts and open them there. Revise in place.
-6. Publish the article through the site repository's own pull-request flow and wait for its checks. Read the live page back and confirm every link before posting anything that points to it.
-7. Post from the owner's signed-in accounts only when told to, read each post back after it is sent, and record the permalinks.
-8. Upload the video as unlisted unless told otherwise, with captions and the synthetic-media disclosure, then confirm it plays signed out.
+6. Publish the article through the site repository's own pull-request flow and wait for its checks. Build it locally first; the site has its own link and claim checks (see [TRAPS.md](TRAPS.md)). Read the live page back and confirm every link before posting anything that points to it.
+7. Post from the owner's signed-in accounts only when told to. If the scheduling tool he names is signed into a different account or lacks his channels, stop and ask rather than posting somewhere else. Link both the article and the video. Read each post back after it is sent, check there is exactly one, and record the permalinks.
+8. Upload the video the owner narrated and approved, unlisted unless told otherwise, with published captions, then confirm it plays signed out. [video/README.md](video/README.md) has the upload checklist and what to do when a video that is already linked has to be replaced.
+9. After publishing, bring the repository's own record up to date through its pull-request flow: README and evidence page name the cut that is live, its visibility and its address.
 
 ## 8. Public source
 

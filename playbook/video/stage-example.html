@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Deed 01 · illustration stage</title>
+<style>
+*{box-sizing:border-box}body{margin:0;width:1280px;height:720px;overflow:hidden;color:#fff5da;background:#101724;font-family:'Liberation Sans',sans-serif}
+section{position:absolute;inset:0;padding:36px 53px;background:radial-gradient(ellipse at 50% 54%,#28354b,#111826 72%);display:none}section.live{display:block}
+.kicker{color:#ffcd70;font-weight:700;font-size:21px;letter-spacing:2px}h1{font-size:44px;line-height:1;margin:12px 0;color:#fff5da}
+.art{position:absolute;inset:0;width:1280px;height:720px}
+.label{fill:#fff5da;font-weight:700;font-size:26px;text-anchor:middle}.small{fill:#b9cce6;font-size:21px;text-anchor:middle}
+.note{position:absolute;left:0;right:0;top:590px;text-align:center;font-size:27px;font-weight:700;color:#ffe2a6}
+.row{fill:#182436;stroke:#394b63;stroke-width:2}.bar{fill:#33465e}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="coin" viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#ffce72" stroke="#b9862d" stroke-width="3"/><path d="M20 10v20M14 15h9a4 4 0 0 1 0 8h-6a4 4 0 0 0 0 8h9" fill="none" stroke="#7a5412" stroke-width="2.5"/></symbol>
+</defs></svg>
+
+<section id="s01b-keyring"><div class="kicker">WHAT A WALLET IS</div><h1>A key ring, not a purse</h1>
+<svg class="art" viewBox="0 0 1280 720">
+ <!-- the purse people imagine -->
+ <g id="k_purse">
+  <path d="M190 300q-30 150 20 190h160q50-40 20-190z" fill="#6b4a3a" stroke="#c99a7a" stroke-width="4"/>
+  <path d="M205 300q85-70 170 0" fill="none" stroke="#c99a7a" stroke-width="6" stroke-linecap="round"/>
+  <use href="#coin" x="222" y="356" width="52" height="52"/><use href="#coin" x="282" y="388" width="52" height="52"/><use href="#coin" x="262" y="326" width="52" height="52"/>
+  <g id="k_cross"><path d="M170 250 410 510M410 250 170 510" stroke="#ff8a8a" stroke-width="12" stroke-linecap="round"/></g>
+ </g>
+ <!-- what it is: a ring with one key -->
+ <g id="k_keyring">
+  <circle cx="290" cy="290" r="52" fill="none" stroke="#ffce72" stroke-width="9"/>
+  <g transform="rotate(14 290 342)">
+   <circle cx="290" cy="372" r="30" fill="#ffce72" stroke="#b9862d" stroke-width="4"/><circle cx="290" cy="364" r="9" fill="#111826"/>
+   <path d="M282 400h16v96h-16z" fill="#ffce72" stroke="#b9862d" stroke-width="4"/>
+   <path d="M298 452h22v14h-22zM298 476h16v14h-16z" fill="#ffce72" stroke="#b9862d" stroke-width="4"/>
+  </g>
+ </g>
+ <text id="k_wlabel" class="label" x="290" y="556">Your wallet</text>
+ <!-- the ledger -->
+ <g id="k_ledger">
+  <rect x="600" y="150" width="620" height="410" rx="16" fill="#0f1826" stroke="#394b63" stroke-width="2"/>
+  <text x="628" y="194" font-size="26" font-weight="700" fill="#ffcd70">Public ledger</text>
+  <text x="1192" y="194" text-anchor="end" font-size="18" fill="#8fa3bd">anyone can read · schematic</text>
+  <g id="k_row0"><rect class="row" x="628" y="214" width="564" height="52" rx="10"/><rect class="bar" x="648" y="232" width="150" height="16" rx="8"/><rect class="bar" x="1010" y="232" width="160" height="16" rx="8"/></g>
+  <g id="k_row1"><rect class="row" x="628" y="278" width="564" height="52" rx="10"/><rect class="bar" x="648" y="296" width="150" height="16" rx="8"/><rect class="bar" x="1060" y="296" width="110" height="16" rx="8"/></g>
+  <g id="k_mine"><rect id="k_mineBox" x="628" y="342" width="564" height="76" rx="10" fill="#243a5a" stroke="#394b63" stroke-width="2"/>
+   <text x="648" y="374" font-size="24" font-weight="700" fill="#fff5da">FKPM...SwHt</text>
+   <text x="648" y="404" font-size="20" fill="#d6e2f3">0.05 SOL · 42.000000001 B1GEM · 250.5 B1USD</text>
+   <text id="k_yours" x="1172" y="388" text-anchor="end" font-size="24" font-weight="700" fill="#ffe2a6">yours</text></g>
+  <g id="k_row3"><rect class="row" x="628" y="430" width="564" height="52" rx="10"/><rect class="bar" x="648" y="448" width="150" height="16" rx="8"/><rect class="bar" x="1030" y="448" width="140" height="16" rx="8"/></g>
+  <g id="k_row4"><rect class="row" x="628" y="494" width="564" height="52" rx="10"/><rect class="bar" x="648" y="512" width="150" height="16" rx="8"/><rect class="bar" x="1080" y="512" width="90" height="16" rx="8"/></g>
+ </g>
+ <g id="k_proof"><path d="M360 400 618 382" fill="none" stroke="#ffce72" stroke-width="4" stroke-dasharray="8 9" stroke-linecap="round"/><text class="small" x="486" y="364" style="fill:#ffe2a6">proves it's yours</text></g>
+ <!-- the dashboard: a frame over one part of the ledger -->
+ <g id="k_window"><rect x="614" y="304" width="592" height="128" rx="12" fill="none" stroke="#6dd5c0" stroke-width="5"/>
+  <rect x="614" y="304" width="150" height="30" rx="8" fill="#6dd5c0"/><text x="689" y="326" text-anchor="middle" font-size="19" font-weight="700" fill="#0f1826">dashboard</text></g>
+ <g id="k_sign"><path d="M600 470C520 520 440 520 372 470" fill="none" stroke="#6dd5c0" stroke-width="4" stroke-linecap="round"/><path d="M372 470l22 2m-22-2 6 21" fill="none" stroke="#6dd5c0" stroke-width="4" stroke-linecap="round"/>
+  <text class="small" x="486" y="548" style="fill:#a8eadc">asks the key to sign</text></g>
+</svg><div class="note" id="k_note"></div></section>
+
+<script>
+const E=id=>document.getElementById(id);
+const clamp=x=>Math.max(0,Math.min(1,x));
+const ease=x=>{const p=clamp(x);return p*p*(3-2*p)};
+function frame(id,t,hits){
+  if(!E(id).classList.contains('live'))document.querySelectorAll('section').forEach(s=>s.classList.toggle('live',s.id===id));
+  const [h0,h1,h2,h3,h4]=hits;
+  const toKey=ease((t-h2)/0.6);                    // "It's a key ring."
+  E('k_purse').setAttribute('opacity',ease((t-0.5)/0.6)*(1-toKey));
+  E('k_cross').setAttribute('opacity',ease((t-h1-0.9)/0.35)); // "doesn't hold your coins"
+  E('k_keyring').setAttribute('opacity',toKey);
+  E('k_wlabel').setAttribute('opacity',ease((t-0.5)/0.6));
+  E('k_ledger').setAttribute('opacity',ease((t-h3-0.2)/0.6)); // "The coins sit on a public ledger"
+  ['k_row0','k_row1','k_mine','k_row3','k_row4'].forEach((r,i)=>E(r).setAttribute('opacity',ease((t-h3-0.6-i*0.22)/0.4)));
+  const proof=ease((t-h3-4.6)/0.6);                // "your key only proves which entries are yours"
+  E('k_proof').setAttribute('opacity',proof);
+  E('k_yours').setAttribute('opacity',proof);
+  E('k_mineBox').setAttribute('stroke',proof>0.5?'#ffce72':'#394b63');E('k_mineBox').setAttribute('stroke-width',proof>0.5?4:2);
+  E('k_window').setAttribute('opacity',ease((t-h4-0.6)/0.6)); // "a dashboard is a window onto that ledger"
+  E('k_sign').setAttribute('opacity',ease((t-h4-3.4)/0.5));   // "plus a way to ask the key ring to sign"
+  E('k_note').textContent=t>=h4?'A dashboard reads the ledger and asks your key to sign':t>=h3?'The coins are entries on a ledger everyone can read':t>=h2?'It holds a key, not coins':t>=h1?'Not a purse':'';
+}
+</script></html>

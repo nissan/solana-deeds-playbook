@@ -31,3 +31,22 @@ Facts that cost a retry on Deeds #1 to #3. Each was true when observed in Novemb
 - A screen recorder emits no frames once the page stops changing. Hold the last frame as a still.
 - Burned-in captions sized for a slide cover a user interface. Keep them to two short lines at a small size, and ship a sidecar file too.
 - A synthetic voice can sound stiff even when the script reads well. Listen for pauses, emphasis and the pronunciation of numbers and product names.
+- A line that discloses a synthetic voice turns false the moment the owner narrates. It hides in four places: the script, a title or end card, the captions and the upload description. Remove all four together.
+- When scenes are encoded separately and joined, a card that follows an animation can come out with grey blacks and dim whites: the animation was marked full range, the card was unmarked, and the joiner read the card as full range too. Mark every scene as limited range. `render.py` does; compare a corner pixel of each card if you change it.
+- Asking the final join for a frame rate repeats the opening frame, so every cut lands one frame late. Let the frames pass through. Without each scene's length named in the join list, the cuts also drift by a few milliseconds per scene.
+- `ffprobe`'s plain-text output can carry a trailing comma for some containers. Read frame counts from its JSON output.
+- A recording made in the browser carries a second or more of silence after the last word. The voice booth cuts it; a hand-built cut would hold the picture too long.
+- Caption times inside a re-voiced scene are spread over the speech, not matched to the words, and the caption text is still the script. If the owner changed the words, the caption has to be changed by hand.
+- A preview that crops a video is not evidence the video is cropped. Check the file's own frame before re-rendering.
+
+## Publishing
+
+- A video platform does not let an upload's file be replaced. A re-recorded video gets a new address, and every link to the old one has to be found and changed.
+- Uploading a caption file can leave it as an unpublished draft while the page says "uploaded". Publish it, then confirm from a signed-out page that a manual track is listed beside the automatic one.
+- Deleting an old upload leaves a dead link in every post that cannot be edited. Say which posts before deleting.
+- One social network lets a post be edited and rewrites links into its own short form; resolve the short link to confirm where it goes. Another offers no edit after a short window; add a reply instead.
+- The owner's blog shows a Mermaid block as code. Render the diagram to an image and embed that.
+- The blog's link check rejects its own address written with `www.`. Use the bare host.
+- A scheduling tool can be signed into a different brand's account. Check which channels it has before queueing anything, and ask if they are not the owner's.
+- In a browser tab that is not in front, a click on a "Post" or menu button may do nothing. Focus the button and press Enter, then confirm on the page that it happened exactly once.
+- Deleting a repository, and some account pages, ask the owner for a passkey or a wider token. That step is his.
