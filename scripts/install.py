@@ -58,7 +58,8 @@ def apply(target):
         if END not in text:
             raise SystemExit("AGENTS.md has a playbook section with no end marker")
         head, rest = text.split(BEGIN, 1)
-        text = head + SECTION + rest.split(END, 1)[1].lstrip("\n")
+        tail = rest.split(END, 1)[1].lstrip("\n")
+        text = head + SECTION + ("\n" + tail if tail else "")
     elif ANCHOR in text:
         # Another tool manages a block at the end of the file and expects to stay last.
         head, rest = text.split(ANCHOR, 1)
