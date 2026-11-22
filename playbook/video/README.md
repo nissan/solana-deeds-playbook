@@ -59,6 +59,17 @@ Ids are letters, digits, `-` and `_` only. Once the owner has recorded a scene, 
 4. Open the exact file locally for the owner. At the draft stage he approves the picture and the words. Then follow [VOICE.md](VOICE.md); the approval that counts for publishing is the one he gives the cut assembled with his own voice, recorded against its SHA-256.
 5. On that approval, copy the approved cut, its captions and assembly record, the manifest, narration receipt, scripts, stage and contact sheet into `docs/evidence/video/` and describe them in the outcome's evidence page: whose voice it is, what is a replay, what is a real screenshot, what is illustrated, what was not shown.
 
+## Adding or changing one scene after the owner has started recording
+
+His takes are filed under scene ids, and a scene he has recorded must not change length or words under him.
+
+1. Add the scene to `manifest.json` with a new id, or give a changed scene a new take number. Leave every other scene's entry alone.
+2. `synthesize.py` refuses to write over existing takes. Synthesise only the new scene: copy the manifest with just that scene into a new folder, run the synthesiser there, then copy its audio files beside the others and insert its entry into `narration-v1.json` at the scene's place. Keep a copy of the receipt from before.
+3. Draw only that scene: `node animate.cjs --scene=ID`. Clips that exist are left as they are.
+4. Render a new numbered cut and its clean copy. Compare the two segment files: no existing scene's frame count may differ, unless that scene's picture is the thing being changed.
+5. Compare the narration receipt with the copy from before: no existing scene's entry may differ.
+6. Import into the booth with `--replace`, then confirm his choices and every take file are unchanged.
+
 ## Screen recordings and screenshots
 
 - Record the application from the commit named in `sourceCommit`, built for production.

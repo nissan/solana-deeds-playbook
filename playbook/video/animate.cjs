@@ -11,9 +11,14 @@
 // i-th sentence of the scene's script starts, so the picture changes when the words do.
 // stage-example.html is a worked example.
 //
+// A clip that already exists is never drawn again: the scene is skipped with a line saying so.
+// To redraw a changed scene, give it a new take number in the manifest. To add one scene to a
+// cut whose other clips exist, add it to the manifest and run with or without --scene=ID.
+//
 // Run from the cut's folder. PUPPETEER_DEPS names a folder whose node_modules has puppeteer;
 // CHROMIUM names the browser binary (default /usr/bin/chromium).
 const { readFile, mkdir } = require('node:fs/promises');
+const { existsSync } = require('node:fs');
 const { spawn } = require('node:child_process');
 const { once } = require('node:events');
 const { resolve, dirname } = require('node:path');
@@ -37,19 +42,25 @@ async function main() {
     for (const scene of specs) {
       if (only && scene.id !== only) continue;
       const entry = receipt.scenes.find(item => item.id === scene.id);
+      // Sentences are matched in order, each from the caption after the last match, so two
+      // sentences that open with the same four words get their own start times.
+      let from = 0;
       const hits = scene.script.map(s => {
         const prefix = s.split(' ').slice(0, 4).join(' ');
-        const cue = entry.captions.find(c => c.text.replaceAll('\n', ' ').startsWith(prefix));
-        if (!cue) throw new Error(`Missing caption timing: ${prefix}`);
-        return cue.start;
+        const at = entry.captions.findIndex((c, i) => i >= from && c.text.replaceAll('\n', ' ').startsWith(prefix));
+        if (at < 0) throw new Error(`Missing caption timing: ${prefix}`);
+        from = at + 1;
+        return entry.captions[at].start;
       });
       const picture = t => page.evaluate((id, t, hits) => frame(id, t, hits), scene.id, t, hits);
       await picture(entry.durationSeconds);
       await page.screenshot({ path: scene.endStill });
       for (const [i, h] of hits.entries()) { await picture(Math.min(h + 6, (hits[i + 1] ?? entry.durationSeconds) - 0.15)); await page.screenshot({ path: `validation/${scene.id}-p${i}.png` }); }
       if (preview) { console.log(scene.id, hits.join(', ')); continue; }
+      // An existing take is never overwritten. Without this check the encoder exits at once
+      // and the loop below waits for ever writing drawings to a closed pipe.
+      if (existsSync(scene.selectedTake)) { console.log(`${scene.id}: ${scene.selectedTake} exists and was left as it is; give a changed scene a new take number`); continue; }
       const frames = Math.ceil((entry.durationSeconds + .32) * 15);
-      // -n: an existing take is never overwritten; give a changed scene a new take number.
       const clip = spawn('ffmpeg', ['-v', 'error', '-n', '-f', 'image2pipe', '-framerate', '15', '-c:v', 'mjpeg', '-i', 'pipe:0', '-vf', 'fps=30', '-an', '-c:v', 'libx264', '-preset', 'fast', '-crf', '18', '-pix_fmt', 'yuv420p', scene.selectedTake], { stdio: ['pipe', 'ignore', 'inherit'] });
       const exited = once(clip, 'exit');
       for (let n = 0; n < frames; n++) {
