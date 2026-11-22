@@ -37,10 +37,17 @@ Recording uses the owner's microphone. Start the booth and hand it over; never s
 6. **Check the cut he assembled.** It is `<media>/deed-NN/renders/deed-NN-voice-vKK.mp4`, with a `.srt` and a `.json` record beside it. Before calling it publishable:
    - The record's `reference` and `undecided` lists are empty. A cut that still uses the reference voice for any scene is a mixed cut: it presents a synthetic voice with nothing saying so, and it must not be uploaded.
    - Full decode with no errors; frame count equals the scene lengths in the record; loudness near -16 LUFS.
-   - Captions: at most two lines, nothing about a synthetic voice. Inside each scene the caption times were spread over the owner's speech, not matched to his words, and the text is still the script. If he said something different, fix that scene's caption text in `<media>/deed-NN/package.json` and assemble again. A later `--replace` import rewrites that file, so make the same change in the cut's narration file too.
+   - Captions: at most two lines, nothing about a synthetic voice. Inside each scene the caption times were spread over the owner's speech, not matched to his words, and the text is still the script.
    - Record the file's SHA-256.
 
-   Say plainly what you did not check (you cannot hear the take; you did not compare each caption with what was said).
+   **Then listen by transcription.** You cannot hear the take, but you can transcribe the assembled cut on the machine with word times; nothing leaves it and the takes are not touched. Use the transcript three ways:
+   - Compare his words with each scene's script. Numerals and odd spellings are the transcriber's; added, dropped or reworded phrases are his. Where he reworded a scene, put what he said to him for confirmation, since the transcriber mishears, and then make it that scene's caption text.
+   - Place each caption on the word it starts with. The booth maps a caption's time in the reference narration onto his speech, so convert each word time back through that scene's speech span before writing it into `<media>/deed-NN/package.json`. Keep a copy of the file from before. A later `--replace` import rewrites it.
+   - Compare when he says each thing with when the picture shows it, for every timed change in an animated scene or a replay card. Re-time a scene whose picture trails his words.
+
+   Assemble again from the choices he has already made, never from choices he has not, and check the new file the same way. Its audio should be identical to the one before.
+
+   Say plainly what you did not check: how the narration sounds, and any scene whose words he has not confirmed.
 
 7. **Approval.** The owner watches the assembled cut and approves that exact file. The approval attaches to its SHA-256. If he re-records a scene and assembles again, that is a new file and a new approval.
 

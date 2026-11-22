@@ -14,7 +14,7 @@ This repository is the master copy. Each deed repository carries a pinned copy u
 | [playbook/TRAPS.md](playbook/TRAPS.md) | Things that cost a retry, as observed |
 | [scripts/install.py](scripts/install.py) | Copies a pinned snapshot into a deed repository, or checks one for drift |
 
-It was written from Deeds #1 to #3, then revised after their three videos were re-recorded in the owner's voice and republished. Deed #4 was its first run by a session that did not write it. That session got from "begin" to three merged outcomes without correction, but the owner had to correct the video and the publishing seven times; the playbook was revised again from that retrospective. The revised checks have not yet been run by a fresh session.
+It was written from Deeds #1 to #3, then revised after their three videos were re-recorded in the owner's voice and republished. Deed #4 was its first run by a session that did not write it. That session got from "begin" to three merged outcomes without correction, but the owner had to correct the video and the publishing seven times; the playbook was revised again from that retrospective. Deed #5 was the first run of those revised checks. Three of them caught a fault before anything was posted, and two did not hold: a narrated scene passed "words against picture" though a viewer could not tell which of two things was meant, and an Escape keystroke closed a dialog in an application the trap did not name. The owner still raised eight things before the agent acted on them, and four messages went out under his name before he had read them. The playbook was revised again from that retrospective, and those revisions have not yet been run by a fresh session.
 
 ## What it is not
 

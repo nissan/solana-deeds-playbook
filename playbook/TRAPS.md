@@ -1,6 +1,6 @@
 # Known traps
 
-Facts that cost a retry on Deeds #1 to #3. Each was true when observed in November 2026; check before relying on one.
+Facts that cost a retry on Deeds #1 to #5. Each was true when observed in November 2026; check before relying on one.
 
 ## Devnet
 
@@ -8,6 +8,9 @@ Facts that cost a retry on Deeds #1 to #3. Each was true when observed in Novemb
 - The public devnet RPC rate-limits sends (`429 Too Many Requests`) partway through a multi-transaction script. Use the owner's keyed RPC when it is available, or back off between sends.
 - An RPC node's token index can trail a transfer that was just confirmed. Poll before asserting a balance.
 - RPC error codes come back as `bigint` from `@solana/kit`. Comparing them to a number fails the comparison, not the transaction.
+- A wallet may embed an older payment library that refuses a recipient whose main account does not exist, even for a token payment. An address that has never held SOL has none. Fund the recipient before a phone test.
+- A wallet may add Compute Budget instructions to a transaction it was served, before or after the transfer. A validator of "the last instruction is the transfer" then rejects a payment that arrived. The fee on the explorer includes the priority fee those instructions set.
+- A library's transfer validation may accept any amount at or above the expected one. Do not report it as an exact-amount check; read the balances for the exact amount.
 
 ## Toolchain
 
@@ -18,6 +21,9 @@ Facts that cost a retry on Deeds #1 to #3. Each was true when observed in Novemb
 - Anchor creates `init_if_needed` accounts before it runs `has_one` and seeds checks, so a caller can see a later check's error. The transaction still reverts.
 - Templates ship their own agent skill folders and advisories. Remove the former; run the package audit and patch the latter.
 - A framework's development server can write its own agent-instructions file into the project on first start. Switch that off in its config, and check the tree after the first run.
+- A package's newest version on the registry may be months behind its source repository, with the release workflow started by hand. Read the default branch and the open issues before porting anything.
+- A framework's development server can block its page scripts for any origin but localhost. A page opened from a phone or another machine then never polls. Use a production build for other devices.
+- A secret scan of the working tree flags a framework's build output, which holds generated keys. Scan the history and the tracked tree, and say which files a finding was in.
 
 ## Process
 
@@ -46,6 +52,11 @@ Facts that cost a retry on Deeds #1 to #3. Each was true when observed in Novemb
 - A summary line drawn near the bottom of an animated scene sits directly above the captions and reads as a second caption.
 - A block explorer page shows its summary before its token and log sections have loaded. Wait for the section you need, not for the page.
 - The top of an explorer's transaction page does not show token amounts. Scroll to the token section, or the picture will not match a narration that names an amount.
+- The animation script used to hang, not fail, when a clip already existed. It now skips the scene and says so; give a changed scene a new take number.
+- The synthesiser refuses to write over existing takes. To add one scene, synthesise it in its own folder and add its entry and audio to the cut's narration receipt.
+- A narration that says "this one" over a still gives the viewer nothing to follow. Move the picture when the words point.
+- Two sentences that open with the same four words used to get the same start time in an animated scene.
+- A long job in the background that prints nothing can be hung. Give it a timeout and check it.
 
 ## Publishing
 
@@ -61,3 +72,10 @@ Facts that cost a retry on Deeds #1 to #3. Each was true when observed in Novemb
 - A post composer can scramble text inserted in one go, and can close on Escape and save what was typed as a draft. Type with keystrokes, avoid Escape, and look in drafts after any failed attempt.
 - A block explorer can answer an automated link check with "too many requests" while the page loads in a browser. Report the link as unconfirmed; do not report it as checked.
 - A network's mention picker can offer several organisations with the same name. If none can be confirmed, post without the mention.
+- Escape closes more than a post composer: a video upload dialog closed on it too, keeping the upload as a private draft. Do not send Escape to any page with unsaved work.
+- An identifier read from a screenshot can be wrong by a capital I or a lowercase l. Read addresses and IDs from the page's own text.
+- A profile may not show a new post for some seconds. Check the composer and the drafts before deciding a post failed.
+- One network turns "#551" in a post into a hashtag. Write "issue 551" where that matters.
+- A post's own page may not render in a browser tab that is not in front, or signed out. Say when a permalink was built from an ID and not read.
+- A project's brand account may be run by another company, or be silent. The people who can act on a bug report are in the repository's commit history.
+- A statement about someone else's issue or release can go stale between the draft and the merge. Read it again immediately before publishing.

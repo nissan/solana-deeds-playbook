@@ -55,6 +55,8 @@ A long outcome goes to a separate builder session with a written brief, so the d
 6. When the handoff arrives, check it against the forge yourself: the pull request head matches the handoff's commit, and the hosted checks on that commit passed. Report what you verified separately from what the builder claims.
 7. Stop the finished session so it does not hold a slot.
 
+**When a dependency lags.** If a published package is too old for the rest of the stack, read its source repository's default branch, its release workflow and its open issues before deciding the package is the problem; the work may be done and unreleased. If an unpublished build is the answer, show that it can be rebuilt byte for byte from a named upstream commit, commit the build with a script that does that, and have CI run the script. Put the choice to the owner with that evidence, not before it.
+
 ## 3. Review and merge
 
 1. Tell the owner what was built, what was checked, and every open risk the builder listed. Recommend which risks to fix before merge and which to list as limitations.
@@ -75,6 +77,7 @@ Scenarios written by an agent stay "Draft" until the owner confirms them. Buildi
 - Prove a rejection with a signed simulation, not a failed transaction: assert the named error and that the accounts did not change.
 - Save one real run's console output to `docs/evidence/`. The demo video replays it.
 - Do not ask the faucet from code. See [TRAPS.md](TRAPS.md).
+- For a test from the owner's phone: run a production server, not the development one; make sure the recipient's main account and token account exist; open the page from another device the way he will. Ask him to try an unhappy path with his own hands at least once. Deeds #4 and #5 both found their most useful faults that way.
 
 **When a deed needs mainnet.** Some deeds only work against mainnet. The agent still never signs there and never holds a mainnet key. The owner makes the transaction from his own wallet; the agent starts the application, records the screen if he wants footage, and afterwards reads the transaction back from the chain at `finalized` and compares it with what the application showed. Keep a read-only reproduction script that does that read-back.
 
@@ -114,6 +117,15 @@ Checks added after Deed #4, where the owner caught each of these himself:
 - **Covering a secret.** Cover it for its whole time on screen with a margin, then check by OCR over every frame of the clip and by eye at both edges of the cover.
 - **One fault, every scene.** When one scene has a fault, look for the same fault in every scene before rendering again.
 
+Checks added after Deed #5:
+
+- **Numbers from the source.** Before a number goes into the script, read it from the screenshot or the chain it will be shown beside. A fee on an explorer page is the base fee plus whatever priority fee the wallet added.
+- **Explain a term the first time it is said.** A unit or a name that appears on screen (lamports, priority fee) gets one plain sentence before it is used.
+- **When the words point, the picture points.** "This one" and "here" need a zoom, an outline or a move at that moment. A still that contains the thing is not enough if the viewer cannot tell which thing is meant.
+- **Bound every long job.** Give a render, a synthesis or a recording a timeout and look at it. A job that has printed nothing for longer than the last one took is not working.
+- **Adding a scene after recording has started.** Synthesise and draw only that scene, show that every other scene's narration, clip and length is unchanged, then swap the picture into the booth with `--replace`. [video/README.md](video/README.md) has the steps.
+- **Listen by transcription.** After the owner assembles, transcribe the cut locally with word times. Compare his words with the captions, place the captions on his words, and compare his timing with each timed change in the picture. [video/VOICE.md](video/VOICE.md) has the steps.
+
 ## 7. Article and social posts
 
 Order: video approved and uploaded, then the article live, then the social posts, each on the owner's explicit instruction.
@@ -121,10 +133,14 @@ Order: video approved and uploaded, then the article live, then the social posts
 1. Draft from the journal, the evidence pages and the receipts. Every number, date and named claim must trace to one of them; mark anything unsourced instead of smoothing it over.
 2. Use the owner's writing-style skill first, then the humaniser skill, then check that the second pass did not strip the voice. Run each as its own pass and write down what it changed; reading a skill and writing "to" it is not using it. If either skill is missing, say so rather than imitating it. For every first-person sentence, check who actually did the thing: the owner, the agent, or both.
 3. Carry the analogy from the video into the article. Explain the concept before the mechanics. Keep the series name and number in the title, and link the previous deed.
-4. Social posts open on a hook a reader can picture, not a summary. Keep the series hashtag the owner uses. Follow the continuity of the earlier posts in the series, except where this playbook says otherwise. Before handing a draft over, apply everything already on file for it: both links, the series hashtag, and the accounts to tag. Open each profile before tagging it. If a mention picker offers look-alike accounts, tag nobody and say so.
+4. Social posts open on a hook a reader can picture, not a summary. Keep the series hashtag the owner uses. Follow the continuity of the earlier posts in the series, except where this playbook says otherwise. Before handing a draft over, apply everything already on file for it: both links, the series hashtag, and the accounts to tag. Open each profile before tagging it. If a mention picker offers look-alike accounts, tag nobody and say so. Count the post's weighted length against the network's limit before handing it over.
+
+   **Start the tag list yourself.** When a deed builds on, or reports a fault in, someone else's project, find who to tell without being asked. The people who can act are the maintainers: read the repository's recent commits, take the handles from their own profiles, and confirm each on the network. A brand account may be run by another company or be silent. Check a hashtag by reading its newest posts; a popular one may carry only bots. File the list in `docs/evidence/` with how each entry was checked.
 5. Put review copies where the owner reads drafts and open them there. Revise in place.
-6. Publish the article through the site repository's own pull-request flow and wait for its checks. Build it locally first; the site has its own link and claim checks (see [TRAPS.md](TRAPS.md)). Read the live page back and confirm every link before posting anything that points to it.
-7. Post from the owner's signed-in accounts only when told to. If the scheduling tool he names is signed into a different account or lacks his channels, stop and ask rather than posting somewhere else. Link both the article and the video. Type the text into the composer with keystrokes, compare what the composer holds with the draft, and only then post. After any failed attempt, check what was posted and what was saved as a draft before trying again. Read each post back after it is sent, check there is exactly one, and record the permalinks.
+6. Publish the article through the site repository's own pull-request flow and wait for its checks. Build it locally first; the site has its own link and claim checks (see [TRAPS.md](TRAPS.md)). In the minute before the merge, read again every statement the article makes about the outside world: an issue's status, a release, a count. Read the live page back and confirm every link before posting anything that points to it.
+7. Post from the owner's signed-in accounts only when told to. If the scheduling tool he names is signed into a different account or lacks his channels, stop and ask rather than posting somewhere else. Link both the article and the video. Type one character and confirm it landed, then type the rest with keystrokes, compare what the composer holds with the draft, and only then post. After any failed attempt, check what was posted and what was saved as a draft before trying again. Read each post back after it is sent, check there is exactly one, and record the permalinks. A profile may not show a new post for some seconds; look at the composer and the drafts before concluding it failed.
+
+   **Everything under his name is shown to him first.** That includes a video's title and description, a comment on someone else's issue and the community message, not only the article and the posts. Put them in the review folder with the other drafts.
 8. Upload the video the owner narrated and approved, unlisted unless told otherwise, with published captions, then confirm it plays signed out. [video/README.md](video/README.md) has the upload checklist and what to do when a video that is already linked has to be replaced.
 9. Share the release where the owner's community gathers. Each earlier deed went to a chat group as one short message: a two-sentence hook and the link to the social post. Find the previous deed's message there, match its shape, send one, and read it back. This step was missed for Deed #3 and had to be asked for; it belongs in the same instruction as the social posts.
 10. After publishing, bring the repository's own record up to date through its pull-request flow: README and evidence page name the cut that is live, its visibility and its address.
@@ -134,9 +150,11 @@ Order: video approved and uploaded, then the article live, then the social posts
 The private repository's history holds the build journal and issue discussion. Do not change its visibility.
 
 1. Export an allowlist of files from the merged commit into a new single-commit repository: source, tests, lock files, licence, toolchain pins and a README written for the public.
-2. Scan the snapshot and its history for secrets, private paths and private repository links.
-3. Build and test from the snapshot before publishing it.
-4. Only then link it from the article and posts.
+2. Scan the snapshot and its history for secrets, private paths and private repository links, and for the owner's own identifiers: a wallet address used as a test fixture is not a secret, but it is his. Put any such finding to him before publishing.
+3. Fix a finding in the private repository through its pull-request flow, then rebuild the snapshot from the merged commit, so the public source stays byte-identical to a commit that passed the hosted checks. Compare blob ids to prove it.
+4. Build and test from a fresh clone of the snapshot before publishing it, and run the deed's reproduction from that clone.
+5. Publish, then confirm from an anonymous clone that it holds the one commit and that the private repository is still private.
+6. Only then link it from the article and posts, and remove any sentence that says the source is private.
 
 ## 9. Retrospective
 
