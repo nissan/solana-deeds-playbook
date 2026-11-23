@@ -61,6 +61,10 @@ A long outcome goes to a separate builder session with a written brief, so the d
 
 1. Tell the owner what was built, what was checked, and every open risk the builder listed. Recommend which risks to fix before merge and which to list as limitations.
 2. The owner decides. A fix requested at review gets a test that fails before the fix and passes after.
+
+   **Before asking for the merge**, added after Deed #5's second outcome merged with a fault in it:
+   - For code that reads the chain because something told it to (a webhook, a poll, a retry), test what it does when that read fails. If the script that proves a feature needed a retry to get through rate limits, ask the same question of the server.
+   - Run the deed's one-command reproduction from a fresh clone of the merge candidate. The run in step 8 comes after the merge, and found the fault ten minutes too late.
 3. Merge only on the owner's instruction, only the exact reviewed head (`gh pr merge N --merge --match-head-commit SHA`), with a merge commit.
 4. Watch the hosted run on `main` after the merge. A failure there is fixed before new work starts.
 5. Update the outcome's status line in `planning/graph.json`, regenerate the mirrors, and sync the issue body from the mirror.
@@ -125,6 +129,8 @@ Checks added after Deed #5:
 - **Bound every long job.** Give a render, a synthesis or a recording a timeout and look at it. A job that has printed nothing for longer than the last one took is not working.
 - **Adding a scene after recording has started.** Synthesise and draw only that scene, show that every other scene's narration, clip and length is unchanged, then swap the picture into the booth with `--replace`. [video/README.md](video/README.md) has the steps.
 - **Listen by transcription.** After the owner assembles, transcribe the cut locally with word times. Compare his words with the captions, place the captions on his words, and compare his timing with each timed change in the picture. [video/VOICE.md](video/VOICE.md) has the steps.
+- **Captions on his words: overlap and order.** After placing captions on the owner's words, check that no two cues overlap and that they are in order, at scene edges especially. Length and line count do not show it.
+- **No pre-selected answer about what he said.** When the transcriber's word is in doubt, ask him on a form with nothing pre-selected. A form can return its defaults when it times out; an answer that is all defaults with empty notes is unanswered until he confirms it. The same goes for any declaration, merge or publication.
 
 ## 7. Article and social posts
 
@@ -135,15 +141,20 @@ Order: video approved and uploaded, then the article live, then the social posts
 3. Carry the analogy from the video into the article. Explain the concept before the mechanics. Keep the series name and number in the title, and link the previous deed.
 4. Social posts open on a hook a reader can picture, not a summary. Keep the series hashtag the owner uses. Follow the continuity of the earlier posts in the series, except where this playbook says otherwise. Before handing a draft over, apply everything already on file for it: both links, the series hashtag, and the accounts to tag. Open each profile before tagging it. If a mention picker offers look-alike accounts, tag nobody and say so. Count the post's weighted length against the network's limit before handing it over.
 
+   **Looking for an organisation's account.** List every link on its own site that contains the network's host, on more than one page, before saying it has none: a company page can sit under an address shape a search for the usual one misses. Where a mention replaces a name in a sentence, write the sentence around the mention in the draft, since the mention shows the page's full name.
+
+   **A disclosure goes where the claim goes.** If the owner has an interest in something a post argues for (a grant, a sponsor, a holding) and a short post has no room to say so, ask him before posting whether it goes in a reply. Do not report the gap afterwards.
+
    **Start the tag list yourself.** When a deed builds on, or reports a fault in, someone else's project, find who to tell without being asked. The people who can act are the maintainers: read the repository's recent commits, take the handles from their own profiles, and confirm each on the network. A brand account may be run by another company or be silent. Check a hashtag by reading its newest posts; a popular one may carry only bots. File the list in `docs/evidence/` with how each entry was checked.
 5. Put review copies where the owner reads drafts and open them there. Revise in place.
 6. Publish the article through the site repository's own pull-request flow and wait for its checks. Build it locally first; the site has its own link and claim checks (see [TRAPS.md](TRAPS.md)). In the minute before the merge, read again every statement the article makes about the outside world: an issue's status, a release, a count. Read the live page back and confirm every link before posting anything that points to it.
 7. Post from the owner's signed-in accounts only when told to. If the scheduling tool he names is signed into a different account or lacks his channels, stop and ask rather than posting somewhere else. Link both the article and the video. Type one character and confirm it landed, then type the rest with keystrokes, compare what the composer holds with the draft, and only then post. After any failed attempt, check what was posted and what was saved as a draft before trying again. Read each post back after it is sent, check there is exactly one, and record the permalinks. A profile may not show a new post for some seconds; look at the composer and the drafts before concluding it failed.
 
    **Everything under his name is shown to him first.** That includes a video's title and description, a comment on someone else's issue and the community message, not only the article and the posts. Put them in the review folder with the other drafts.
-8. Upload the video the owner narrated and approved, unlisted unless told otherwise, with published captions, then confirm it plays signed out. [video/README.md](video/README.md) has the upload checklist and what to do when a video that is already linked has to be replaced.
+8. Upload the video the owner narrated and approved, unlisted unless told otherwise, with published captions, then confirm it plays signed out. The platform's declarations are his to make: see the upload checklist. [video/README.md](video/README.md) has the upload checklist and what to do when a video that is already linked has to be replaced.
 9. Share the release where the owner's community gathers. Each earlier deed went to a chat group as one short message: a two-sentence hook and the link to the social post. Find the previous deed's message there, match its shape, send one, and read it back. This step was missed for Deed #3 and had to be asked for; it belongs in the same instruction as the social posts.
 10. After publishing, bring the repository's own record up to date through its pull-request flow: README and evidence page name the cut that is live, its visibility and its address.
+11. **A second release for the same deed.** Its posts are new pieces, not edits of the first release's, and they link the same public source. When it makes a statement in an earlier article untrue ("this isn't built"), add a dated forward link to that article in the same step, and leave the original sentence as written.
 
 ## 8. Public source
 

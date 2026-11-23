@@ -83,6 +83,8 @@ Uploading is a separate instruction from approving the cut. Upload the exact app
 
 - **Visibility:** unlisted unless told otherwise. Ask before the article goes out whether it should be public.
 - **Altered or synthetic content:** answer for what is in the file. With the owner's own voice and plainly illustrated scenes the answer is no. If any synthetic voice remained, the answer would be yes, and the cut should not be going up at all (see [VOICE.md](VOICE.md)).
+- **Paid promotion and other declarations of interest:** the owner's answer, not the agent's. If he holds a grant from, is sponsored by, or is paid by anyone whose product the video argues for, stop with the upload saved as a draft and ask him, on a form with nothing pre-selected. Record his answer in the evidence.
+- **Order:** save as private, upload and publish the captions, then change the visibility. A public video never sits without its captions.
 - **Captions:** upload the sidecar file with timing, then publish it. Uploading alone leaves a draft. Confirm from a signed-out page that a manual caption track is listed.
 - Wait for the platform's checks, confirm the video plays signed out, and record the URL beside the file hash.
 - **Replacing a video that is already linked:** the platform gives a new upload a new address. Update every place that links the old one (article, public source README, evidence page, posts that can be edited) and add a reply where a post cannot be edited. Delete the old upload only on the owner's instruction, and tell him which posts will be left with a dead link.
