@@ -61,6 +61,8 @@ A long outcome goes to a separate builder session with a written brief, so the d
 
 **When a dependency lags.** If a published package is too old for the rest of the stack, read its source repository's default branch, its release workflow and its open issues before deciding the package is the problem; the work may be done and unreleased. If an unpublished build is the answer, show that it can be rebuilt byte for byte from a named upstream commit, commit the build with a script that does that, and have CI run the script. Put the choice to the owner with that evidence, not before it.
 
+**When someone else's tool is proposed for a deed.** Whether a protocol, SDK or hosted service belongs in a deed is settled by an evaluation, not an opinion. Use the `third-party-evaluation` skill (source: `nissan/Work`, `skills/third-party-evaluation/`): read the outcome first; send documentation research to a delegate that runs nothing; keep the probe with the session that holds the keys, in a throwaway folder outside every repository, going from install beside the deed's pins to a devnet run only as far as the deed's rules allow; write one page that leads with the recommendation and says what was run, what was read and what was not tried; and add a proposal the owner decides. Change no outcome before he does. Eight evaluation pages were written this way in the week of Deed #5: two led to stretch outcomes, one changed a toolchain, one confirmed a pin, and four were declined or deferred.
+
 ## 3. Review and merge
 
 1. Tell the owner what was built, what was checked, and every open risk the builder listed. Recommend which risks to fix before merge and which to list as limitations.
