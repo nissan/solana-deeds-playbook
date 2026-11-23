@@ -35,6 +35,8 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - A secret scanner's generic rule can flag a public address because the field name contains "Key". An exception scoped by file path can let real findings in those files through: scope it to the exact line shape, and test it by planting something the scanner catches without the exception.
 - A process started for a check can outlive it and hold its port. Stop it by port, not by a name pattern.
 - A password manager's approval prompt can time out or be dismissed. Each restart of a process that needs a secret is another prompt: start it once and leave it running.
+- A form shown to the owner can return its pre-selected answers when it times out. Give no default to a question of fact, a declaration, a merge or a publication, and treat all-defaults with empty notes as unanswered.
+- A feature can pass every test and every devnet run and still fail on the first RPC error, because no run met one. Inject the failure.
 
 ## Video
 
@@ -79,3 +81,8 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - A post's own page may not render in a browser tab that is not in front, or signed out. Say when a permalink was built from an ID and not read.
 - A project's brand account may be run by another company, or be silent. The people who can act on a bug report are in the repository's commit history.
 - A statement about someone else's issue or release can go stale between the draft and the merge. Read it again immediately before publishing.
+- A typing helper can time out part-way through a long field and keep what it typed. Read the field, type the remainder, then compare the whole with the draft.
+- A mention picker may not open when the `@` follows a bracket; it needs a space before it. Selecting a mention may also leave no space after it.
+- An organisation's site can link its company page under another address shape ("showcase") that redirects. Search for the host, not the path.
+- A web app can ignore an address typed with a chat's ID until the chat is clicked in its list. Confirm the header names the right chat and topic before typing.
+- An upload form asks more than whether content is synthetic. A paid-promotion question may have no answer selected, and the answer is the owner's.
