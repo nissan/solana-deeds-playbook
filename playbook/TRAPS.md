@@ -87,3 +87,12 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - An organisation's site can link its company page under another address shape ("showcase") that redirects. Search for the host, not the path.
 - A web app can ignore an address typed with a chat's ID until the chat is clicked in its list. Confirm the header names the right chat and topic before typing.
 - An upload form asks more than whether content is synthetic. A paid-promotion question may have no answer selected, and the answer is the owner's.
+
+## Evaluating someone else's tool
+
+- A host remembered from an earlier project can still answer and no longer be the vendor's. Call only addresses the vendor's current documentation names.
+- A lending market can hold more than one reserve with the same ticker, and the first listed may be nearly empty and pay nothing. Look up by mint and check the size before using a rate.
+- A public statistics endpoint can answer 200 with zeros while the service's "since inception" figure looks right. Compare two figures for the same thing before trusting either.
+- An SDK's README can be behind its published code. When a call fails on a missing field, read the package's type declarations, not the README.
+- A vendor's documentation site can be unpublished on the day it is needed. Confirm in a browser, record it, and recommend "not now" instead of guessing the API.
+- A hosted service that delivers to the live network cannot be tried by an agent that may not send there. That is a finding to report, and every use of the service is the owner's step.
