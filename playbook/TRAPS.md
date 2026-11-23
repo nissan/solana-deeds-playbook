@@ -37,6 +37,7 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - A password manager's approval prompt can time out or be dismissed. Each restart of a process that needs a secret is another prompt: start it once and leave it running.
 - A form shown to the owner can return its pre-selected answers when it times out. Give no default to a question of fact, a declaration, a merge or a publication, and treat all-defaults with empty notes as unanswered.
 - A feature can pass every test and every devnet run and still fail on the first RPC error, because no run met one. Inject the failure.
+- A delegation tool can assign a subagent to a different model provider than the directing session, and say nothing. A repository whose checks file names one provider as the builder is then built by another. Ask every delegate for its model and provider before it edits anything.
 
 ## Video
 

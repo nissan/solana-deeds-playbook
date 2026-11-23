@@ -26,6 +26,8 @@ A deed repository starts as a plan: three or four outcome issues and no product 
 
 After the outcomes: demo video, drafted with a reference voice and then narrated by the owner (step 6), article and social posts (step 7), public source (step 8), retrospective (step 9).
 
+**Deed numbers.** The twenty challenges are numbered in the order they are done, as the owner set on 23 November 2026: B1 to B5 are Deeds #1 to #5, M1 to M8 are #6 to #13, and A1 to A7 are #14 to #20. Each repository carries its own number: the `deed` field at the top of `planning/graph.json`, and the opening lines of `AGENTS.md` and `README.md`. Use that number in the journal's file name, the video and article titles and the posts. If the three places disagree, stop and ask.
+
 ## 1. When the owner says "begin"
 
 1. Read `AGENTS.md`, `README.md`, `docs/SECURITY.md`, `docs/DECISIONS.md`, `docs/ROUTING.md`, `docs/agent-settings/CHECKS.md`, `planning/graph.json` and the first open outcome issue.
@@ -40,6 +42,8 @@ After the outcomes: demo video, drafted with a reference voice and then narrated
 A long outcome goes to a separate builder session with a written brief, so the directing session stays free and the work survives a restart. The owner may instead have the directing session build an outcome itself. That is his choice: ask, and do not assume either way. Deed #4 was built in the directing session.
 
 1. Check capacity first, by the rule in the owner's fleet policy. Unknown capacity is a stop, not a free slot.
+
+   **Check who the builder will be before the brief goes out.** `docs/agent-settings/CHECKS.md` names the kind of session that builds. A delegation tool can hand the work to another provider without saying so. Ask the delegate to state its model and provider first; if it is not the named builder, do not delegate that repository. A delegate that finds itself in the wrong repository stops and reports. Added after three planning pull requests in M7 were written by a session the repository does not name as its builder.
 2. Fill in the brief template for the outcome type. Every `[BRACKET]` is re-derived for this deed; nothing is carried over from an earlier deed.
 3. Save the brief outside the repository (for example `~/.local/state/<outcome>/brief.md`) and tell the builder to finish by writing `handoff.md` beside it.
 4. Start the builder in the outcome's worktree. With Claude Code:
