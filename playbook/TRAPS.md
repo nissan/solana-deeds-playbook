@@ -89,7 +89,7 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - An upload form asks more than whether content is synthetic. A paid-promotion question may have no answer selected, and the answer is the owner's.
 - A chat app in the browser sends on Enter. A message with a line break needs Shift+Enter, and a check after it that nothing was sent early.
 - A survey frame can appear over an upload dialog's "Next" button part-way through. Dismiss it through its own button; do not click through it.
-- A composer's markup changes between sessions: the same network showed a rich-text box one day and a plain text area the next. Find the input by what it is, and read back what it holds by the means that input uses.
+- A post composer may be a plain text area where a rich-text box was expected, and a selector written for one finds nothing in the other. Find the input by what it is, and read back what it holds by the means that input uses.
 
 ## Evaluating someone else's tool
 
