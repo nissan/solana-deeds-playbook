@@ -71,11 +71,13 @@ A long outcome goes to a separate builder session with a written brief, so the d
    **Before asking for the merge**, added after Deed #5's second outcome merged with a fault in it:
    - For code that reads the chain because something told it to (a webhook, a poll, a retry), test what it does when that read fails. If the script that proves a feature needed a retry to get through rate limits, ask the same question of the server.
    - Run the deed's one-command reproduction from a fresh clone of the merge candidate. The run in step 8 comes after the merge, and found the fault ten minutes too late.
-3. Merge only on the owner's instruction, only the exact reviewed head (`gh pr merge N --merge --match-head-commit SHA`), with a merge commit.
+3. Merge only on the owner's instruction, only the exact reviewed head (`gh pr merge N --merge --match-head-commit SHA`), with a merge commit. If another pull request merges first and this one then conflicts, resolving the conflict moves its head: read the checks on the new head and ask for the owner's word again.
 4. Watch the hosted run on `main` after the merge. A failure there is fixed before new work starts.
 5. Update the outcome's status line in `planning/graph.json`, regenerate the mirrors, and sync the issue body from the mirror.
 
 Scenarios written by an agent stay "Draft" until the owner confirms them. Building to draft scenarios is allowed; calling them accepted is not.
+
+**"Continue" after a merge means the next planned outcome**, added after Deed #6. Before starting the demo video, list every planned outcome that is not yet built and either build it or ask. In Deed #6 the builder went to the video with two outcomes unbuilt and the owner had to stop it.
 
 ## 4. Working on devnet
 
@@ -138,12 +140,18 @@ Checks added after Deed #5:
 - **Captions on his words: overlap and order.** After placing captions on the owner's words, check that no two cues overlap and that they are in order, at scene edges especially. Length and line count do not show it.
 - **No pre-selected answer about what he said.** When the transcriber's word is in doubt, ask him on a form with nothing pre-selected. A form can return its defaults when it times out; an answer that is all defaults with empty notes is unanswered until he confirms it. The same goes for any declaration, merge or publication.
 
+Checks added after Deed #6:
+
+- **One sentence per scene.** The owner's test: can someone who hears the scene once say what its point is? Apply it to every scene before the reference is synthesised. A scene that is a list of incidents fails it; so does a line kept because the writer liked it.
+- **Fixable faults before the script.** Before a scene says something is still wrong, ask the owner whether it should be fixed first. A video that ends on a fault the deed could have closed reads as unfinished, and the scene has to be rewritten after he has recorded around it.
+- **An address on a card must already answer.** Any address drawn into the picture is requested signed out before the cut is handed over. The source address on a closing card is the public repository's (step 8), so settle its name before the card is drawn; a private repository's address is a dead link for every viewer. In Deed #6 both closing cards named the private repository and were caught after the owner had recorded and assembled both parts.
+
 ## 7. Article and social posts
 
 Order: video approved and uploaded, then the article live, then the social posts, each on the owner's explicit instruction.
 
 1. Draft from the journal, the evidence pages and the receipts. Every number, date and named claim must trace to one of them; mark anything unsourced instead of smoothing it over.
-2. Use the owner's writing-style skill first, then the humaniser skill, then check that the second pass did not strip the voice. Run each as its own pass and write down what it changed; reading a skill and writing "to" it is not using it. If either skill is missing, say so rather than imitating it. For every first-person sentence, check who actually did the thing: the owner, the agent, or both.
+2. Use the owner's writing-style skill first, then the humaniser skill, then check that the second pass did not strip the voice. Run each as its own pass and write down what it changed; reading a skill and writing "to" it is not using it. If a pass changed nothing, say that. Text the agent itself drafted in the target style is recorded as "written to the style", not as a pass, and a pass record lists only changes that were made. If either skill is missing, say so rather than imitating it. For every first-person sentence, check who actually did the thing: the owner, the agent, or both.
 3. Carry the analogy from the video into the article. Explain the concept before the mechanics. Keep the series name and number in the title, and link the previous deed.
 4. Social posts open on a hook a reader can picture, not a summary. Keep the series hashtag the owner uses. Follow the continuity of the earlier posts in the series, except where this playbook says otherwise. Before handing a draft over, apply everything already on file for it: both links, the series hashtag, and the accounts to tag. Open each profile before tagging it. If a mention picker offers look-alike accounts, tag nobody and say so. Count the post's weighted length against the network's limit before handing it over.
 
@@ -161,6 +169,8 @@ Order: video approved and uploaded, then the article live, then the social posts
 9. Share the release where the owner's community gathers. Each earlier deed went to a chat group as one short message: a two-sentence hook and the link to the social post. Find the previous deed's message there, match its shape, send one, and read it back. This step was missed for Deed #3 and had to be asked for; it belongs in the same instruction as the social posts.
 10. After publishing, bring the repository's own record up to date through its pull-request flow: README and evidence page name the cut that is live, its visibility and its address.
 11. **A second release for the same deed.** Its posts are new pieces, not edits of the first release's, and they link the same public source. When it makes a statement in an earlier article untrue ("this isn't built"), add a dated forward link to that article in the same step, and leave the original sentence as written.
+12. **A deed released in two parts from the start.** When the owner asks for two short videos and one article: each video has its own length limit and its own title and description, and each description links the other part. The article links both. Upload both unlisted, publish the article with the first part, and make the second part public at its own release with its own new posts. Tell the owner that the article's link lets a reader watch the second part before its release.
+13. **A fix upstream can be its own post.** When a fault the deed reported is fixed by the project's maintainers, tell the owner and offer a one-off post about it, separate from the release posts. Keep it to what the record shows: when it was reported, when the fix merged, and whether the fix names the cause the report gave.
 
 ## 8. Public source
 
@@ -170,7 +180,7 @@ The private repository's history holds the build journal and issue discussion. D
 2. Scan the snapshot and its history for secrets, private paths and private repository links, and for the owner's own identifiers: a wallet address used as a test fixture is not a secret, but it is his. Put any such finding to him before publishing.
 3. Fix a finding in the private repository through its pull-request flow, then rebuild the snapshot from the merged commit, so the public source stays byte-identical to a commit that passed the hosted checks. Compare blob ids to prove it.
 4. Build and test from a fresh clone of the snapshot before publishing it, and run the deed's reproduction from that clone.
-5. Publish, then confirm from an anonymous clone that it holds the one commit and that the private repository is still private.
+5. Show the owner the README written for the public before publishing: it goes out under his name, like a video description. Then publish, and confirm from an anonymous clone that it holds the one commit and that the private repository is still private.
 6. Only then link it from the article and posts, and remove any sentence that says the source is private.
 
 ## 9. Retrospective

@@ -78,7 +78,7 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - Escape closes more than a post composer: a video upload dialog closed on it too, keeping the upload as a private draft. Do not send Escape to any page with unsaved work.
 - An identifier read from a screenshot can be wrong by a capital I or a lowercase l. Read addresses and IDs from the page's own text.
 - A profile may not show a new post for some seconds. Check the composer and the drafts before deciding a post failed.
-- One network turns "#551" in a post into a hashtag. Write "issue 551" where that matters.
+- One network turns "#551" in a post into a hashtag. Write "issue 551" where that matters. Another does the same to "Deed #6": write "Deed 6" there.
 - A post's own page may not render in a browser tab that is not in front, or signed out. Say when a permalink was built from an ID and not read.
 - A project's brand account may be run by another company, or be silent. The people who can act on a bug report are in the repository's commit history.
 - A statement about someone else's issue or release can go stale between the draft and the merge. Read it again immediately before publishing.
@@ -87,6 +87,9 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - An organisation's site can link its company page under another address shape ("showcase") that redirects. Search for the host, not the path.
 - A web app can ignore an address typed with a chat's ID until the chat is clicked in its list. Confirm the header names the right chat and topic before typing.
 - An upload form asks more than whether content is synthetic. A paid-promotion question may have no answer selected, and the answer is the owner's.
+- A chat app in the browser sends on Enter. A message with a line break needs Shift+Enter, and a check after it that nothing was sent early.
+- A survey frame can appear over an upload dialog's "Next" button part-way through. Dismiss it through its own button; do not click through it.
+- A composer's markup changes between sessions: the same network showed a rich-text box one day and a plain text area the next. Find the input by what it is, and read back what it holds by the means that input uses.
 
 ## Evaluating someone else's tool
 
