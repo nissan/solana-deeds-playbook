@@ -16,6 +16,9 @@ manifest-example.json  a small scene list showing each kind of scene
 animate.cjs       stage.html + narration-v1.json -> one clip and one end still per animated scene
 render.py         manifest + narration-v1.json -> renders/demo-vN.mp4 + captions/demo-vN.srt (draft)
                   with "clean": renders/demo-vN-clean.mp4, no captions, for the voice booth
+transcribe.py     the cut the owner assembled -> a time for every word he said (VOICE.md step 6)
+place_captions.py those word times + the wording he confirmed -> the booth's package.json,
+                  with each caption on the word it starts with
 sources/          screen takes, stills, diagrams, screenshots
 validation/       phase stills, contact sheet, decode log
 receipts/         SHA-256 of each render, and each scene's exact length in frames

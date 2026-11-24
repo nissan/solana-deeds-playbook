@@ -49,7 +49,9 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - Asking the final join for a frame rate repeats the opening frame, so every cut lands one frame late. Let the frames pass through. Without each scene's length named in the join list, the cuts also drift by a few milliseconds per scene.
 - `ffprobe`'s plain-text output can carry a trailing comma for some containers. Read frame counts from its JSON output.
 - A recording made in the browser carries a second or more of silence after the last word. The voice booth cuts it; a hand-built cut would hold the picture too long.
-- Caption times inside a re-voiced scene are spread over the speech, not matched to the words, and the caption text is still the script. If the owner changed the words, the caption has to be changed by hand.
+- Caption times inside a re-voiced scene are spread over the speech, not matched to the words, and the caption text is still the script. If the owner changed the words, the caption text has to change too. `video/place_captions.py` does both from his confirmed wording and a local transcript.
+- The local transcriber's library fails to open any file when its decoder library is the newest release (faster-whisper 1.2.1 with PyAV 19: `open() got an unexpected keyword argument 'metadata_errors'`). Pin both, as the first lines of `video/transcribe.py` show.
+- Placing captions from a cut's `.srt` and a package that are not from the same assembly gives times that look plausible and are wrong. The placing script now refuses when the cue counts differ.
 - A preview that crops a video is not evidence the video is cropped. Check the file's own frame before re-rendering.
 - A player that finds a caption file beside a video with the same name loads it, so a video with burned-in captions shows them twice. The file is fine; open it with sidecar loading off.
 - A summary line drawn near the bottom of an animated scene sits directly above the captions and reads as a second caption.
