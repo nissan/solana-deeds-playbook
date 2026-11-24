@@ -32,10 +32,11 @@ After the outcomes: demo video, drafted with a reference voice and then narrated
 
 1. Read `AGENTS.md`, `README.md`, `docs/SECURITY.md`, `docs/DECISIONS.md`, `docs/ROUTING.md`, `docs/agent-settings/CHECKS.md`, `planning/graph.json` and the first open outcome issue.
 2. Check the starting state: default branch clean, no open pull requests, the last hosted run on `main` green. If the outcome's acceptance is already met on `main`, say so with the evidence and move to the next outcome.
-3. Record intake before any edit: append a receipt to `planning/intake.json` mapping each ask to an issue, with the SHA-256 of the issue body as read back from the forge, then run `python3 scripts/intake.py --base FULL_BASE_SHA --live`. The live check needs a token: `GITHUB_TOKEN=$(gh auth token)`. Without it a private repository answers 404.
-4. Work in one worktree per outcome, on a branch named for the outcome (`b4-001-toolchain`). Keep the main clone on `main`. The owner keeps deed clones together in one projects folder; ask where if it is not obvious, and do not invent a second location.
-5. Start the build journal (step 5) with the kickoff entry.
-6. Say which builder will do the work. `docs/agent-settings/CHECKS.md` names who builds and who reviews. If the named builder cannot be started, stop and say so; never switch provider silently.
+3. Check this copy is current. `docs/playbook/import.json` names the master commit it was copied from; compare it with `gh api repos/nissan/solana-deeds-playbook/commits/main -q .sha`. If the copy is behind, tell the owner before building and ask whether to refresh first. A refresh is `python3 scripts/install.py apply` run from a clean clone of the master, taken through this repository's own pull-request flow; never edit the copy by hand. A deed already under way keeps the copy it started with unless the owner says otherwise.
+4. Record intake before any edit: append a receipt to `planning/intake.json` mapping each ask to an issue, with the SHA-256 of the issue body as read back from the forge, then run `python3 scripts/intake.py --base FULL_BASE_SHA --live`. The live check needs a token: `GITHUB_TOKEN=$(gh auth token)`. Without it a private repository answers 404.
+5. Work in one worktree per outcome, on a branch named for the outcome (`b4-001-toolchain`). Keep the main clone on `main`. The owner keeps deed clones together in one projects folder; ask where if it is not obvious, and do not invent a second location.
+6. Start the build journal (step 5) with the kickoff entry.
+7. Say which builder will do the work. `docs/agent-settings/CHECKS.md` names who builds and who reviews. If the named builder cannot be started, stop and say so; never switch provider silently.
 
 ## 2. Giving an outcome to a builder
 
