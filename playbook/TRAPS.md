@@ -92,6 +92,11 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - A chat app in the browser sends on Enter. A message with a line break needs Shift+Enter, and a check after it that nothing was sent early.
 - A survey frame can appear over an upload dialog's "Next" button part-way through. Dismiss it through its own button; do not click through it.
 - A post composer may be a plain text area where a rich-text box was expected, and a selector written for one finds nothing in the other. Find the input by what it is, and read back what it holds by the means that input uses.
+- A video platform's upload dialog can keep its own Save disabled after the first save, behind a "video processing" box. Close the box, set visibility on the video's details page, reload and read it back: the first change there may not save.
+- A new post on one network does not appear in the markup of the profile's activity page for about a minute. Reload before taking its address from the page.
+- A post composer can be a rich-text editor where each line is its own paragraph and a blank line is an empty one. Compare its text with the draft after collapsing blank lines.
+- A profile page's element ids can change while its text stays readable. Read a profile's name, bio and website from the page text.
+- A tool's site may link no social account. Look in its source repository's README, and in its maker's account, before saying it has none.
 
 ## Evaluating someone else's tool
 

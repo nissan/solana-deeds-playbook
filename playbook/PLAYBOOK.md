@@ -127,6 +127,8 @@ Checks added after Deed #4, where the owner caught each of these himself:
 - **Re-time to his take.** After the owner records, re-time animated scenes to his recording. The reference voice reads slower than he does, so a scene timed to it runs on after he stops.
 - **Room for captions.** Leave the bottom of the frame empty in screen scenes. Draw no summary line where captions go: it reads as a second caption.
 - **Screen takes.** The owner drives and the agent records. Say beforehand what a full-screen recording will show. Raw takes stay outside the repository; scenes are cropped to the page.
+
+  **One driver, named first.** Before the recorder starts, say who drives the page (the owner by hand, or the agent through the browser relay at his request) and who starts and stops the recorder. Capture the tab, not the screen, where the host allows it. In Deed #7 a whole-screen recording ran while each side waited for the other to drive, and nothing in it was usable.
 - **Covering a secret.** Cover it for its whole time on screen with a margin, then check by OCR over every frame of the clip and by eye at both edges of the cover.
 - **One fault, every scene.** When one scene has a fault, look for the same fault in every scene before rendering again.
 
@@ -138,7 +140,7 @@ Checks added after Deed #5:
 - **Bound every long job.** Give a render, a synthesis or a recording a timeout and look at it. A job that has printed nothing for longer than the last one took is not working.
 - **Adding a scene after recording has started.** Synthesise and draw only that scene, show that every other scene's narration, clip and length is unchanged, then swap the picture into the booth with `--replace`. [video/README.md](video/README.md) has the steps.
 - **Listen by transcription.** After the owner assembles, transcribe the cut locally with word times. Compare his words with the captions, place the captions on his words, and compare his timing with each timed change in the picture. [video/VOICE.md](video/VOICE.md) has the steps.
-- **Captions on his words: overlap and order.** After placing captions on the owner's words, check that no two cues overlap and that they are in order, at scene edges especially. Length and line count do not show it.
+- **Captions on his words: overlap and order.** After placing captions on the owner's words, check that no two cues overlap and that they are in order, at scene edges especially. Length and line count do not show it. The usual cause: a scene's last cue takes its end from the words inside the scene's window, and the next scene's first word, said early, falls inside it. Clamp each scene's last cue to end before the next scene's first cue starts, then check again.
 - **No pre-selected answer about what he said.** When the transcriber's word is in doubt, ask him on a form with nothing pre-selected. A form can return its defaults when it times out; an answer that is all defaults with empty notes is unanswered until he confirms it. The same goes for any declaration, merge or publication.
 
 Checks added after Deed #6:
@@ -147,9 +149,15 @@ Checks added after Deed #6:
 - **Fixable faults before the script.** Before a scene says something is still wrong, ask the owner whether it should be fixed first. A video that ends on a fault the deed could have closed reads as unfinished, and the scene has to be rewritten after he has recorded around it.
 - **An address on a card must already answer.** Any address drawn into the picture is requested signed out before the cut is handed over. The source address on a closing card is the public repository's (step 8), so settle its name before the card is drawn; a private repository's address is a dead link for every viewer. In Deed #6 both closing cards named the private repository and were caught after the owner had recorded and assembled both parts.
 
+Checks added after Deed #7:
+
+- **Who "you" is, when the subject is money.** A scene or sentence that tells the viewer whether to move, keep or spend money says who the viewer is (the person using the tool, not a trader or an investor) and that it is arithmetic, not financial advice. In Deed #7 the owner stopped recording at the advice scene because he could not tell what his role was in it.
+
 ## 7. Article and social posts
 
 Order: video approved and uploaded, then the article live, then the social posts, each on the owner's explicit instruction.
+
+**Write the whole order out.** When reporting where the release stands, list every remaining step in this order, the upload included, even when the owner has asked about only one of them. In Deed #7 a report that said "public source, then article and posts" left the upload out, and the owner had to ask for it.
 
 1. Draft from the journal, the evidence pages and the receipts. Every number, date and named claim must trace to one of them; mark anything unsourced instead of smoothing it over.
 2. Use the owner's writing-style skill first, then the humaniser skill, then check that the second pass did not strip the voice. Run each as its own pass and write down what it changed; reading a skill and writing "to" it is not using it. If a pass changed nothing, say that. Text the agent itself drafted in the target style is recorded as "written to the style", not as a pass, and a pass record lists only changes that were made. If either skill is missing, say so rather than imitating it. For every first-person sentence, check who actually did the thing: the owner, the agent, or both.
@@ -161,7 +169,7 @@ Order: video approved and uploaded, then the article live, then the social posts
    **A disclosure goes where the claim goes.** If the owner has an interest in something a post argues for (a grant, a sponsor, a holding) and a short post has no room to say so, ask him before posting whether it goes in a reply. Do not report the gap afterwards.
 
    **Start the tag list yourself.** When a deed builds on, or reports a fault in, someone else's project, find who to tell without being asked. The people who can act are the maintainers: read the repository's recent commits, take the handles from their own profiles, and confirm each on the network. A brand account may be run by another company or be silent. Check a hashtag by reading its newest posts; a popular one may carry only bots. File the list in `docs/evidence/` with how each entry was checked.
-5. Put review copies where the owner reads drafts and open them there. Revise in place.
+5. Put review copies in the owner's Obsidian vault (`~/Documents/Obsidian Vault`), in a new folder named `Solana Deed N review.XXXXXX` (as `mktemp -d` makes it), with each file named for what it is ("Blog article.md", "X post.md", "Review notes.md"), and open the review notes in Obsidian. Revise in place there. Name the folder in the deed's release record, so the next deed copies the place and not only the media folder. In Deed #7 the drafts went to a folder under `~/Videos`, copied from Deed #6's release record, which named that folder and not the vault.
 6. Publish the article through the site repository's own pull-request flow and wait for its checks. Build it locally first; the site has its own link and claim checks (see [TRAPS.md](TRAPS.md)). In the minute before the merge, read again every statement the article makes about the outside world: an issue's status, a release, a count. Read the live page back and confirm every link before posting anything that points to it.
 7. Post from the owner's signed-in accounts only when told to. If the scheduling tool he names is signed into a different account or lacks his channels, stop and ask rather than posting somewhere else. Link both the article and the video. Type one character and confirm it landed, then type the rest with keystrokes, compare what the composer holds with the draft, and only then post. After any failed attempt, check what was posted and what was saved as a draft before trying again. Read each post back after it is sent, check there is exactly one, and record the permalinks. A profile may not show a new post for some seconds; look at the composer and the drafts before concluding it failed.
 
