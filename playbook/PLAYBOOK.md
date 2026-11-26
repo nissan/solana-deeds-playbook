@@ -68,7 +68,7 @@ A long outcome goes to a separate builder session with a written brief, so the d
 
 ## 3. Review and merge
 
-1. Tell the owner what was built, what was checked, and every open risk the builder listed. Recommend which risks to fix before merge and which to list as limitations.
+1. Tell the owner what was built, what was checked, and every open risk the builder listed. Recommend which risks to fix before merge and which to list as limitations. Beside each limitation, write what would remove it and roughly what that costs; if the cost is small, remove it now. In Deed #4 a limit recorded as accepted ("only the 20 newest transactions are searched") was the first thing a reader of the public source asked about, a day later.
 2. The owner decides. A fix requested at review gets a test that fails before the fix and passes after.
 
    **Before asking for the merge**, added after Deed #5's second outcome merged with a fault in it:
@@ -189,6 +189,12 @@ Order: video approved and uploaded, then the article live, then the social posts
 11. **A second release for the same deed.** Its posts are new pieces, not edits of the first release's, and they link the same public source. When it makes a statement in an earlier article untrue ("this isn't built"), add a dated forward link to that article in the same step, and leave the original sentence as written.
 12. **A deed released in two parts from the start.** When the owner asks for two short videos and one article: each video has its own length limit and its own title and description, and each description links the other part. The article links both. Upload both unlisted, publish the article with the first part, and make the second part public at its own release with its own new posts. Tell the owner that the article's link lets a reader watch the second part before its release.
 13. **A fix upstream can be its own post.** When a fault the deed reported is fixed by the project's maintainers, tell the owner and offer a one-off post about it, separate from the release posts. Keep it to what the record shows: when it was reported, when the fix merged, and whether the fix names the cause the report gave.
+14. **Replies after a release.** A reply that reports a fault is work, not conversation. Added after Deed #4, where a stranger's replies led to two fixes.
+    - **Find them thread by thread.** Open each of the deed's posts and read beneath the account's own last reply. A notification list missed both follow-ups in Deed #4.
+    - **Check the report against the code and the interface it relies on before answering.** Say in the reply what was confirmed. If the reply proposes a remedy, check that the interface offers it; say plainly when it does not. If the owner remembers the design differently from the report, read the code before agreeing with either, and then check what the video and the article say.
+    - **A fix is its own outcome**: an issue, scenarios, a test that fails before it, and what it has not been run against.
+    - **Order: build, show the owner the reply's wording with the pull request, merge, update the public source (step 8), then reply once.** A promise followed by a confirmation is two posts where one would do, and "shipped" must be true where the reader can look.
+    - **Before replying, check that no answer from the account is already under the question.** Another session may share the account. A reply on another deed's thread belongs to the session that owns that repository: report it and leave it.
 
 ## 8. Public source
 
@@ -200,6 +206,7 @@ The private repository's history holds the build journal and issue discussion. D
 4. Build and test from a fresh clone of the snapshot before publishing it, and run the deed's reproduction from that clone.
 5. Show the owner the README written for the public before publishing: it goes out under his name, like a video description. Then publish, and confirm from an anonymous clone that it holds the one commit and that the private repository is still private.
 6. Only then link it from the article and posts, and remove any sentence that says the source is private.
+7. **A later fix.** *(Proposed; the owner decides between the two forms.)* When a merged fix has to reach a snapshot that is already public, either rebuild the snapshot as one commit from the new merged commit and replace the old one, or add one commit on top that carries exactly the files the fix changed. Deeds #1 and #4 added commits on top: links to the repository keep working and a reader can see what changed. Whichever form, steps 2 to 5 apply again: scan, prove every source file identical to the merged commit, test from a fresh clone, and show the owner the README's changed lines before the push. In Deed #4 the README changes went out before he saw them.
 
 ## 9. Retrospective
 

@@ -42,6 +42,10 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - A delegation tool can assign a subagent to a different model provider than the directing session, and say nothing. A repository whose checks file names one provider as the builder is then built by another. Ask every delegate for its model and provider before it edits anything.
 - A pipe into `head` ends a long-running command when `head` exits. Send a job that must finish to a log and read the log.
 - A browser relay may refuse a `data:` address. Use a real page for a scratch test of a key or a selector.
+- A command-line tool can print a hint on its error stream on success. A script that reads both streams as one answer then fails its own comparison and skips the work. Read the answer from standard output only.
+- A transaction someone else pays the fee for has no ID until that payer signs, which can happen inside a third party's service. The wallet's own signature is in it from the start: keep that, and search the wallet's history for it if the service's answer is lost.
+- A call that lists an account's history returns one page. A fixed-size read silently stops being enough on a busy account: page with the cursor to a boundary, cap the pages, and treat reaching the cap as "not searched", never as "not there".
+- A test fixture's placeholder value (a timestamp of 1) starts to mean something the day the code reads that field. When logic begins using a field, search the tests for stand-ins.
 
 ## Video
 
@@ -104,6 +108,8 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - A post composer can be a rich-text editor where each line is its own paragraph and a blank line is an empty one. Compare its text with the draft after collapsing blank lines.
 - A profile page's element ids can change while its text stays readable. Read a profile's name, bio and website from the page text.
 - A tool's site may link no social account. Look in its source repository's README, and in its maker's account, before saying it has none.
+- A network's mentions list can omit replies made deep in a thread. Open the thread under your own last reply.
+- Two sessions can answer from the same account without knowing of each other. Look for an existing answer under the question before typing one.
 
 ## Evaluating someone else's tool
 
