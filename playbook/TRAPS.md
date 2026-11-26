@@ -42,6 +42,12 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - A delegation tool can assign a subagent to a different model provider than the directing session, and say nothing. A repository whose checks file names one provider as the builder is then built by another. Ask every delegate for its model and provider before it edits anything.
 - A pipe into `head` ends a long-running command when `head` exits. Send a job that must finish to a log and read the log.
 - A browser relay may refuse a `data:` address. Use a real page for a scratch test of a key or a selector.
+- A hosted check that fails on a different test each run, always by timeout, while `main` stays green, points at something the tests share, not at the tests. Compare pass rates from the run list before changing a time limit.
+- A builder that saves a downloaded log under its harness's own state folder stops on a permission prompt. Name the system temporary directory in the brief.
+- A new worktree's trust prompt can open with "No" highlighted. A confirm key then declines and exits. Read the menu before sending a key.
+- A status line written before a merge stays "awaiting merge" after it. Nothing checks it. Rewrite it in the sitting the merge lands.
+- A tool that sets an issue's text from a file overwrites whatever was there, including text from an unmerged branch that `main` does not hold. Compare the live text with `main`'s copy first, and keep the saved previous text.
+- A long line in a terminal view can be cut short without a mark. Text that will be posted is printed wrapped and read in full first.
 
 ## Video
 

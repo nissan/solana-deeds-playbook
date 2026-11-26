@@ -20,11 +20,11 @@ The full CHECKS.md command; the product build and tests from a fresh `git clone`
 
 ## Commits and pull request
 
-Small, focused commits whose messages explain why. Push the branch and open a DRAFT pull request against main that names the check covering the change and says the scenarios are unreviewed drafts. Wait for the hosted checks on the final commit and read the result. Comment the outcome on issue #[N].
+Small, focused commits whose messages explain why. Push the branch and open a DRAFT pull request against main that names the check covering the change and says the scenarios are unreviewed drafts. Wait for the hosted checks on the final commit and read the result. Push nothing after that commit: put the run links in the pull request description and in a comment on issue #[N], changed from a file and read back. A commit that only records a passing run starts a new run on a head nobody has read.
 
 ## Hard limits
 
-Never merge; never push to main; no mainnet; no keypair, seed, API key or .env committed or printed; no changes to repository settings, secrets or visibility; no publication; no sudo; touch no other repository. Avoid writing files that trigger a permission prompt when an alternative exists. A denied permission or a check that never starts is a stop: write what happened on issue #[N] and end. [TIME BOX FROM THE ISSUE]: if it will not fit, stop and report what is left on the issue rather than widening scope or dropping a scenario.
+Never merge; never push to main; no mainnet; no keypair, seed, API key or .env committed or printed; no changes to repository settings, secrets or visibility; no publication; no sudo; touch no other repository. Avoid writing files that trigger a permission prompt when an alternative exists: temporary files go in the system temporary directory, never in the harness's own state folder. Use only the tools you were started with; if the work needs another, say what you could not do instead of calling it. A denied permission or a check that never starts is a stop: write what happened on issue #[N] and end. [TIME BOX FROM THE ISSUE]: if it will not fit, stop and report what is left on the issue rather than widening scope or dropping a scenario.
 
 ## Finish
 
