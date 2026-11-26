@@ -11,6 +11,8 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - A wallet may embed an older payment library that refuses a recipient whose main account does not exist, even for a token payment. An address that has never held SOL has none. Fund the recipient before a phone test.
 - A wallet may add Compute Budget instructions to a transaction it was served, before or after the transfer. A validator of "the last instruction is the transfer" then rejects a payment that arrived. The fee on the explorer includes the priority fee those instructions set.
 - A library's transfer validation may accept any amount at or above the expected one. Do not report it as an exact-amount check; read the balances for the exact amount.
+- Pyth's price service (Hermes) has needed an API key since Pyth's upgrade of 26 August 2026; a request without one gets 401. A reviewer needs their own key to run a reproduction that fetches prices.
+- Pyth's receiver marks an update posted by its one-instruction shortcut as partially verified when it carries fewer signatures than the full threshold. A program that asks for full verification refuses it. Have the signatures checked first, in their own transaction: both together do not fit in 1,232 bytes. A local validator with the real programs shows this; a test that writes the price account by hand does not.
 
 ## Toolchain
 
@@ -38,6 +40,8 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - A form shown to the owner can return its pre-selected answers when it times out. Give no default to a question of fact, a declaration, a merge or a publication, and treat all-defaults with empty notes as unanswered.
 - A feature can pass every test and every devnet run and still fail on the first RPC error, because no run met one. Inject the failure.
 - A delegation tool can assign a subagent to a different model provider than the directing session, and say nothing. A repository whose checks file names one provider as the builder is then built by another. Ask every delegate for its model and provider before it edits anything.
+- A pipe into `head` ends a long-running command when `head` exits. Send a job that must finish to a log and read the log.
+- A browser relay may refuse a `data:` address. Use a real page for a scratch test of a key or a selector.
 
 ## Video
 
@@ -71,6 +75,9 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - One social network lets a post be edited and rewrites links into its own short form; resolve the short link to confirm where it goes. Another offers no edit after a short window; add a reply instead.
 - The owner's blog shows a Mermaid block as code. Render the diagram to an image and embed that.
 - The blog's link check rejects its own address written with `www.`. Use the bare host.
+- The blog answers its bare host with a redirect to `www.`. A read-back that does not follow redirects waits on a page that is already live.
+- In a video platform's upload dialog, setting one declaration can leave another showing as unanswered. Read every declaration back immediately before saving, and again from the saved video.
+- One network's "post successful" notice links the new post at once, before the profile's activity page lists it. Take the address from the notice.
 - A scheduling tool can be signed into a different brand's account. Check which channels it has before queueing anything, and ask if they are not the owner's.
 - In a browser tab that is not in front, a click on a "Post" or menu button may do nothing. Focus the button and press Enter, then confirm on the page that it happened exactly once.
 - Deleting a repository, and some account pages, ask the owner for a passkey or a wider token. That step is his.
