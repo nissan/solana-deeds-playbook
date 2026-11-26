@@ -72,7 +72,7 @@ A long outcome goes to a separate builder session with a written brief, so the d
 
 ## 3. Review and merge
 
-1. Tell the owner what was built, what was checked, and every open risk the builder listed. Recommend which risks to fix before merge and which to list as limitations.
+1. Tell the owner what was built, what was checked, and every open risk the builder listed. Recommend which risks to fix before merge and which to list as limitations. Beside each limitation, write what would remove it and roughly what that costs; if the cost is small, remove it now. In Deed #4 a limit recorded as accepted ("only the 20 newest transactions are searched") was the first thing a reader of the public source asked about, a day later.
 2. The owner decides. A fix requested at review gets a test that fails before the fix and passes after.
 
    **Before asking for the merge**, added after Deed #5's second outcome merged with a fault in it:
@@ -212,6 +212,7 @@ The private repository's history holds the build journal and issue discussion. D
 4. Build and test from a fresh clone of the snapshot before publishing it, and run the deed's reproduction from that clone.
 5. Show the owner the README written for the public before publishing: it goes out under his name, like a video description. Then publish, and confirm from an anonymous clone that it holds the one commit and that the private repository is still private.
 6. Only then link it from the article and posts, and remove any sentence that says the source is private.
+7. **A later fix goes on top as one commit** (the owner's decision, 26 November 2026). When a merged fix has to reach a snapshot that is already public, add one commit that carries exactly the files the fix changed, taken from the new merged commit, and update the README's snapshot line. Do not rebuild and replace the history: links to the repository keep working and a reader can see what changed. Steps 2 to 5 apply again: scan the tree and the history, prove every source file identical to the merged commit, test from a fresh clone, and show the owner the README's changed lines before the push. In Deed #4 the README changes went out before he saw them.
 
 ## 9. Retrospective
 
@@ -221,11 +222,11 @@ At the end of the deed, write down what should change: a step in this playbook t
 
 Publishing is not the end. Someone may reply with a fault, and they may be right.
 
-1. In the days after a release, read the replies and mentions on each post as a whole before answering any, so related follow-ups are found together. Work that another session or the owner has already answered is reported, not picked up.
-2. Check an outside report against the code and the interface it relies on before drafting a reply, and say in the reply what was confirmed. Check any remedy it proposes the same way.
+1. In the days after a release, read the replies and mentions on each post as a whole before answering any, so related follow-ups are found together. Open each thread and read beneath the account's own last reply: in Deed #4 the notification list showed neither of two follow-ups. Work that another session or the owner has already answered is reported, not picked up; look for an existing answer from the account under the question before typing one.
+2. Check an outside report against the code and the interface it relies on before drafting a reply, and say in the reply what was confirmed. Check any remedy it proposes the same way, and say plainly when the interface does not offer it. If the owner remembers the design differently from the report, read the code before agreeing with either, then check what the video and the article say.
 3. A reply goes out under the owner's name: show him the text first, each time. "Post it" for a reply he has not seen is a request for the draft. Count the length with a tool when you quote it.
 4. Build the fix as its own outcome: intake receipt, issue, scenarios, a test that fails on the old code, a builder the repository allows, a pull request, the owner's merge. Record which new tests fail before the fix and which pass on both sides.
-5. Say "fixed" in public only after the hosted run on `main` passes for the merge commit. Then post the follow-up reply, read it back, and record its address.
+5. Say "fixed" in public only after the hosted run on `main` passes for the merge commit. When the reader can only see the public source, refresh it first (item 6), so the reply is true where they can look. Then post one follow-up reply, read it back, and record its address. Prefer that single reply to a promise followed by a confirmation: show the owner its wording alongside the pull request.
 6. Bring the public copies into line: refresh the public source from the merged commit (step 8, proving it identical again), and update the article by step 7, item 11: a dated section or forward link, with the original sentence left as written.
 7. If a suggestion would change what a user sees, state the rule you intend to build back to the owner before building it, label it as your reading in the issue, and name the case it does not cover.
 
