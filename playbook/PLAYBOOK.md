@@ -60,6 +60,10 @@ A long outcome goes to a separate builder session with a written brief, so the d
 6. When the handoff arrives, check it against the forge yourself: the pull request head matches the handoff's commit, and the hosted checks on that commit passed. Report what you verified separately from what the builder claims.
 7. Stop the finished session so it does not hold a slot.
 
+**A follow-up for the same builder.** When the owner's decision changes the work after a handoff, send it to the session that did the work, so it keeps what it read: `claude --bg --resume <session-id> ... -- "$(cat followup.md)"`, with the session id from `claude agents --json`. Write the follow-up as a file beside the brief. It starts with the owner's decision in his words, tells the builder to record that decision in the intake file before any other edit, and ends by asking for the handoff to be rewritten. Keep a copy of the old handoff so a rewritten one can be told from an unchanged one.
+
+**A tool outside the allowed list.** A builder may reach for a tool it was not started with, a browser-automation tool for screenshots for example, and stop on a prompt for each call. Read the whole request, approve a single use only if the brief already covers what it does, and never choose "don't ask again". In the next brief either allow the tool on purpose or tell the builder not to use it and to say what it could not do. Tell every builder where temporary files go: the system temporary directory, never the harness's own state folder, which the harness treats as sensitive. Added after Deed #1's follow-up outcomes, where builders stopped five times on permission prompts: once for a log saved in the harness's folder and four times for a browser tool.
+
 **When a dependency lags.** If a published package is too old for the rest of the stack, read its source repository's default branch, its release workflow and its open issues before deciding the package is the problem; the work may be done and unreleased. If an unpublished build is the answer, show that it can be rebuilt byte for byte from a named upstream commit, commit the build with a script that does that, and have CI run the script. Put the choice to the owner with that evidence, not before it.
 
 **Pins taken from an earlier deed.** A set of versions that an earlier deed proved together is a starting point, not the answer. Before adopting it, read what devnet and mainnet run (`getVersion`) and the newest stable release of each tool, and try the newest set in a scratch copy outside the repository. In Deed #8 the first pins ran the tests on a runtime a major version behind devnet; the owner asked, and the newest set built and passed first time.
@@ -76,9 +80,17 @@ A long outcome goes to a separate builder session with a written brief, so the d
    - Run the deed's one-command reproduction from a fresh clone of the merge candidate. The run in step 8 comes after the merge, and found the fault ten minutes too late.
 3. Merge only on the owner's instruction, only the exact reviewed head (`gh pr merge N --merge --match-head-commit SHA`), with a merge commit. If another pull request merges first and this one then conflicts, resolving the conflict moves its head: read the checks on the new head and ask for the owner's word again.
 4. Watch the hosted run on `main` after the merge. A failure there is fixed before new work starts.
-5. Update the outcome's status line in `planning/graph.json`, regenerate the mirrors, and sync the issue body from the mirror.
+5. Bring the record up to date in the same sitting, through the repository's pull-request flow. A status line written before the merge ("in a draft pull request", "Open: owner merge") is false the moment the merge lands, and nothing flags it. In Deed #1 five outcomes still said so days later and took two extra pull requests to correct.
+   - **Status line:** "Merged on main by pull request #N as SHA on DATE, with hosted CI green on main. Delivered: … Open: …". Keep every fact that is still true; verify the merge commit and the run before writing them.
+   - **Readiness:** when the owner confirms the scenarios, and only then, set it to "Ready (scenarios confirmed by the owner on DATE)" and quote his words in the intake receipt. A confirmation covers the scenarios as written at a named commit. Check that the generated page stops calling them drafts; a repository whose `plan.py` renders the draft sentence unconditionally needs that fixed first.
+   - **Sync the issue** from the regenerated mirror, and first compare the live text with the mirror on `main`. If they differ, the live text came from somewhere else, an unmerged branch for example: save it and find out where from before overwriting it.
+   - **Close the issue** only on the owner's instruction, after the hosted run on `main` passes for the commit the closing comment cites. Read the comment in full before posting it, whoever drafted it, and check every path it names exists on `main`.
 
 Scenarios written by an agent stay "Draft" until the owner confirms them. Building to draft scenarios is allowed; calling them accepted is not.
+
+**When a hosted check fails on the pull request.** Read which test failed and why before proposing anything. If every failure is a timeout and the failing test changes from run to run, the tests share something slow: compare the branch's pass rate with `main`'s, counted from the run list, and look for a network read the change added to. Raising a time limit or a wait treats the symptom. In Deed #1's follow-up two rounds went to time limits while three of six runs failed on three different tests; the cause was a test network that fetched from a free public endpoint, and saving those accounts in the repository fixed it. A product setting changed to get a test environment through is a change for users: say so, and put it back when the environment is fixed another way.
+
+**Measure on the final commit.** Decide how many hosted runs will be read and what ends the round before the first one, and bind both to the final commit. Push nothing after it: a commit that only records a passing run starts a new run on a head nobody has measured. Run links go in the pull request description and an issue comment.
 
 **"Continue" after a merge means the next planned outcome**, added after Deed #6. Before starting the demo video, list every planned outcome that is not yet built and either build it or ask. In Deed #6 the builder went to the video with two outcomes unbuilt and the owner had to stop it.
 
@@ -189,12 +201,6 @@ Order: video approved and uploaded, then the article live, then the social posts
 11. **A second release for the same deed.** Its posts are new pieces, not edits of the first release's, and they link the same public source. When it makes a statement in an earlier article untrue ("this isn't built"), add a dated forward link to that article in the same step, and leave the original sentence as written.
 12. **A deed released in two parts from the start.** When the owner asks for two short videos and one article: each video has its own length limit and its own title and description, and each description links the other part. The article links both. Upload both unlisted, publish the article with the first part, and make the second part public at its own release with its own new posts. Tell the owner that the article's link lets a reader watch the second part before its release.
 13. **A fix upstream can be its own post.** When a fault the deed reported is fixed by the project's maintainers, tell the owner and offer a one-off post about it, separate from the release posts. Keep it to what the record shows: when it was reported, when the fix merged, and whether the fix names the cause the report gave.
-14. **Replies after a release.** A reply that reports a fault is work, not conversation. Added after Deed #4, where a stranger's replies led to two fixes.
-    - **Find them thread by thread.** Open each of the deed's posts and read beneath the account's own last reply. A notification list missed both follow-ups in Deed #4.
-    - **Check the report against the code and the interface it relies on before answering.** Say in the reply what was confirmed. If the reply proposes a remedy, check that the interface offers it; say plainly when it does not. If the owner remembers the design differently from the report, read the code before agreeing with either, and then check what the video and the article say.
-    - **A fix is its own outcome**: an issue, scenarios, a test that fails before it, and what it has not been run against.
-    - **Order: build, show the owner the reply's wording with the pull request, merge, update the public source (step 8), then reply once.** A promise followed by a confirmation is two posts where one would do, and "shipped" must be true where the reader can look.
-    - **Before replying, check that no answer from the account is already under the question.** Another session may share the account. A reply on another deed's thread belongs to the session that owns that repository: report it and leave it.
 
 ## 8. Public source
 
@@ -211,3 +217,17 @@ The private repository's history holds the build journal and issue discussion. D
 ## 9. Retrospective
 
 At the end of the deed, write down what should change: a step in this playbook that was wrong or missing, a trap worth recording, a correction the owner had to make twice. Propose playbook changes to the master repository and put durable lessons where the owner keeps them. Do not edit this pinned copy.
+
+## 10. After the release: replies and fixes
+
+Publishing is not the end. Someone may reply with a fault, and they may be right.
+
+1. In the days after a release, read the replies and mentions on each post as a whole before answering any, so related follow-ups are found together. Open each thread and read beneath the account's own last reply: in Deed #4 the notification list showed neither of two follow-ups. Work that another session or the owner has already answered is reported, not picked up; look for an existing answer from the account under the question before typing one.
+2. Check an outside report against the code and the interface it relies on before drafting a reply, and say in the reply what was confirmed. Check any remedy it proposes the same way, and say plainly when the interface does not offer it. If the owner remembers the design differently from the report, read the code before agreeing with either, then check what the video and the article say.
+3. A reply goes out under the owner's name: show him the text first, each time. "Post it" for a reply he has not seen is a request for the draft. Count the length with a tool when you quote it.
+4. Build the fix as its own outcome: intake receipt, issue, scenarios, a test that fails on the old code, a builder the repository allows, a pull request, the owner's merge. Record which new tests fail before the fix and which pass on both sides.
+5. Say "fixed" in public only after the hosted run on `main` passes for the merge commit. When the reader can only see the public source, refresh it first (item 6), so the reply is true where they can look. Then post one follow-up reply, read it back, and record its address. Prefer that single reply to a promise followed by a confirmation: show the owner its wording alongside the pull request.
+6. Bring the public copies into line: refresh the public source from the merged commit (step 8, proving it identical again), and update the article by step 7, item 11: a dated section or forward link, with the original sentence left as written.
+7. If a suggestion would change what a user sees, state the rule you intend to build back to the owner before building it, label it as your reading in the issue, and name the case it does not cover.
+
+Added after Deed #1, where one reader's replies led to five follow-up outcomes in two days.

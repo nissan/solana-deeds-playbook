@@ -46,6 +46,12 @@ Facts that cost a retry on Deeds #1 to #5. Each was true when observed in Novemb
 - A transaction someone else pays the fee for has no ID until that payer signs, which can happen inside a third party's service. The wallet's own signature is in it from the start: keep that, and search the wallet's history for it if the service's answer is lost.
 - A call that lists an account's history returns one page. A fixed-size read silently stops being enough on a busy account: page with the cursor to a boundary, cap the pages, and treat reaching the cap as "not searched", never as "not there".
 - A test fixture's placeholder value (a timestamp of 1) starts to mean something the day the code reads that field. When logic begins using a field, search the tests for stand-ins.
+- A hosted check that fails on a different test each run, always by timeout, while `main` stays green, points at something the tests share, not at the tests. Compare pass rates from the run list before changing a time limit.
+- A builder that saves a downloaded log under its harness's own state folder stops on a permission prompt. Name the system temporary directory in the brief.
+- A new worktree's trust prompt can open with "No" highlighted. A confirm key then declines and exits. Read the menu before sending a key.
+- A status line written before a merge stays "awaiting merge" after it. Nothing checks it. Rewrite it in the sitting the merge lands.
+- A tool that sets an issue's text from a file overwrites whatever was there, including text from an unmerged branch that `main` does not hold. Compare the live text with `main`'s copy first, and keep the saved previous text.
+- A long line in a terminal view can be cut short without a mark. Text that will be posted is printed wrapped and read in full first.
 
 ## Video
 
