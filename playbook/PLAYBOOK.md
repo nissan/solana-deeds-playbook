@@ -218,6 +218,18 @@ The private repository's history holds the build journal and issue discussion. D
 
 At the end of the deed, write down what should change: a step in this playbook that was wrong or missing, a trap worth recording, a correction the owner had to make twice. Propose playbook changes to the master repository and put durable lessons where the owner keeps them. Do not edit this pinned copy.
 
+**Close the records first.** The session that made the release does this before the retrospective, while it still knows what happened. A release is not finished until all of these are true on the default branch, and the retrospective says each was checked:
+
+1. Every outcome's status in `planning/graph.json` says what was merged, by which pull request and merge commit, and what was left unshown. None still reads "Queued" or "not started" for work that is merged.
+2. Every readiness line says whether the owner confirmed the scenarios, with the date. If he has not, ask; do not leave "Draft" on a published deed without saying so.
+3. A release record names the published file by its SHA-256, the owner's approval of that file in his words, and each public address with the date it went out: video, article, posts, public source.
+4. No evidence page still says "nothing has been made public" without the date that was true.
+5. Each delivered outcome's issue is synced from its page and closed with the pull request, merge commit and status. An outcome that was not built stays open and says so.
+
+Read each outcome's whole status before closing its issue; a list cut short hides the one that was never built. A repair made later by another session can only record what it can read that day.
+
+Added on 26 November 2026. Deed #2 had been public for six days while its plan said the work was not started, all four issues were open, and no record existed of the narrated cut, its hash or the owner's approval. Deed #3's stretch outcome was nearly closed as delivered from a shortened listing; it had never been built.
+
 ## 10. After the release: replies and fixes
 
 Publishing is not the end. Someone may reply with a fault, and they may be right.
